@@ -35,7 +35,7 @@ const Prelogin = () => {
     <Text className='text-center text-lg font-bold ' style={{
         color:'#424f55'
     }}>
-    It's easy to find a doctor and {'\n'}getting appointment 
+    It's easy to find a doctor ::::and {'\n'}getting appointment 
     </Text>
 
 
