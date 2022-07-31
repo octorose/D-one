@@ -42,7 +42,7 @@ const Prelogin = () => {
     It's easy to find a doctor and {'\n'}getting appointment 
     </Text> */}
 
-    <OnboardingItems />
+    <OnboardingItems navigation={navigation}/>
     </SafeAreaView>
   )
 }
