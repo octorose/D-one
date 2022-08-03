@@ -54,8 +54,8 @@ const OnboardingItems = ({navigation}) => {
         return <View style = {{height:height*0.25, justifyContent:'space-between', paddingHorizontal: 20}}>
 
             <View style = {{flexDirection: 'row', justifyContent:'center', marginTop: 40}}>
-                {slides.map((_,index)=>(
-                <View key={index } style={[styles.indicator, currentSlideIndex == index && {
+                {slides.map((_,indexo)=>(
+                <View key={indexo} style={[styles.indicator, currentSlideIndex == indexo && {
                     backgroundColor : '#11103d',
                     width:25
                 }]}/>
@@ -91,7 +91,7 @@ const OnboardingItems = ({navigation}) => {
     const styles = StyleSheet.create({
       indicator: {
           height:2.5,
-          width:10,
+          width:12,
           backgroundColor:"#4f8ee8",
           marginHorizontal: 3,
           borderRadius:2,
@@ -122,7 +122,7 @@ const OnboardingItems = ({navigation}) => {
         ref={ref}
         onMomentumScrollEnd={updateCurrentSlideIndex}
         data={slides}
-        contentContainerStyle = {{height:height*0.50}}
+        contentContainerStyle = {{height:height*0.45}}
         showsHorizontalScrollIndicator={false}
         horizontal
         pagingEnabled 

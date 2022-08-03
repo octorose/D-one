@@ -33,7 +33,7 @@ react.useEffect( () => {
           {
             isAppFirstlaunched && (
               <Stack.Screen name="Prelogin" component={Prelogin} />
-            )}
+              )}
             {/* Screens */}
             <Stack.Screen name = 'Homescreen' component={Homescreen}/>
           </Stack.Navigator> 
