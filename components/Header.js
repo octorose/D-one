@@ -40,10 +40,9 @@ fetch('https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=movies&count=1
 	.then(response => quotes=response)
 	.catch(err => console.error(err));
   
-  
 const Header = () => {
   return (
-    <View className='flex-row items-center justify-between'>
+    <View className='flex-row items-center justify-between mt-9'>
         <Text className='text-3xl font-bold tracking-wide' style={
                 {
                 color:'#0f0e4c'
@@ -69,6 +68,7 @@ const Header = () => {
         className = 'h-16 w-16'
         />
     </View>
+
   )
 }
 
