@@ -1,13 +1,13 @@
 import { BackHandler, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import react, { Component, useEffect } from 'react'
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Daily from '../screens/Daily';
 import Average from '../screens/Average';
 import ReactNativeCalendarStrip from 'react-native-calendar-strip';
 import moment from 'moment';
-const Tab = createMaterialTopTabNavigator();
+import { useNavigation } from '@react-navigation/native';
 
 const Stats = () => { 
+  const navigation = useNavigation();
   const styles = StyleSheet.create({
     up:{
       height:'100%', backgroundColor:'#fff', borderRadius:18, borderWidth:1,borderBottomWidth:-4,borderBottomRightRadius:0, borderTopLeftRadius:0, borderBottomLeftRadius:0,shadowColor: "#000000",
@@ -33,7 +33,7 @@ const Stats = () => {
           <View style={{height:"73%",width:'98%', marginLeft:'auto', marginRight:'auto'}}>
             <View style={{flex:1}}>
               <View>
-                  <View style={{flexDirection:'row', marginTop:30, marginBottom:30, position:'relative', height:44}}>
+                  <View style={{flexDirection:'row', marginTop:10, marginBottom:30, position:'relative', height:44}}>
             
                       <TouchableOpacity className='justify-center items-left' style={{ height:'100%', backgroundColor:'#fff', borderRadius:18, borderWidth:1,borderBottomWidth:-1,borderBottomRightRadius:0, borderTopRightRadius:0, borderBottomLeftRadius:0,shadowColor: "#000000",
                       shadowOpacity: 0.3,
@@ -42,7 +42,7 @@ const Stats = () => {
                         height: -1,
                         width: 2,
                       }, borderColor:'#e6e6e6',flex:1,zIndex:2}} onPressIn={UpdateCurrentTabIndex0}>
-                          <Text className='font-bold text-lg text-left ml-3'>
+                          <Text className='font-bold text-lg text-left ml-3' style={{color:'#0d093b'}}>
                           Daily
                           </Text>
                       </TouchableOpacity>
@@ -51,7 +51,7 @@ const Stats = () => {
                         width: -1,
                         
                       },zIndex:4}]}onPressIn={UpdateCurrentTabIndex1}>
-                          <Text className='font-bold text-lg ml-3'>
+                          <Text className='font-bold text-lg ml-3' style={{color:'#0d093b'}}>
                           Average
                           </Text>
                       </TouchableOpacity>
@@ -70,7 +70,7 @@ const Stats = () => {
                         {currentTabIndex == 1 ? 
                         <Average/> 
                         : 
-                        <Daily/>
+                        <Daily navigation = {navigation}/>
                         }
             </View>
           </View>

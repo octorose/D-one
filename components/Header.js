@@ -27,22 +27,24 @@ const greetings = {
       
       return g;
   }
-  const options = {
-	method: 'POST',
-	headers: {
-		'X-RapidAPI-Key': '9454321336mshad93533763256a9p10d077jsnee9ef7d4adf7',
-		'X-RapidAPI-Host': 'andruxnet-random-famous-quotes.p.rapidapi.com'
-	}
-};
-let quotes;
-fetch('https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=movies&count=10', options)
-	.then(response => response.json())
-	.then(response => quotes=response)
-	.catch(err => console.error(err));
+//   const options = {
+// 	method: 'POST',
+// 	headers: {
+// 		'X-RapidAPI-Key': '9454321336mshad93533763256a9p10d077jsnee9ef7d4adf7',
+// 		'X-RapidAPI-Host': 'andruxnet-random-famous-quotes.p.rapidapi.com'
+// 	}
+// };
+// let quotes;
+// fetch('https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=movies&count=10', options)
+// 	.then(response => response.json())
+// 	.then(response => quotes=response)
+// 	.catch(err => console.error(err));
   
 const Header = () => {
+    let profilepic = 'https://ih1.redbubble.net/image.264256051.2667/poster,840x830,f8f8f8-pad,1000x1000,f8f8f8.u4.jpg'
+
   return (
-    <View className='flex-row items-center justify-between mt-9'>
+    <View className='flex-row items-center justify-between mt-4'>
         <Text className='text-3xl font-bold tracking-wide' style={
                 {
                 color:'#0f0e4c'
@@ -62,7 +64,7 @@ const Header = () => {
         <Image
         source={
             {
-                uri:'https://ih1.redbubble.net/image.264256051.2667/poster,840x830,f8f8f8-pad,1000x1000,f8f8f8.u4.jpg'
+                uri:profilepic
             }
         }
         className = 'h-16 w-16'

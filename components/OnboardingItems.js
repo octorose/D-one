@@ -65,7 +65,7 @@ const OnboardingItems = ({navigation}) => {
                 {
                     currentSlideIndex == slides.length - 1 ?
                 <View  style = {{height: 50, backgroundColor:'#11103d',borderRadius: 10,justifyContent: 'center',}}>
-                    <TouchableOpacity style={{justifyContent:'center'}} onPress={()=> navigation.replace('Homescreen')}>
+                    <TouchableOpacity style={{justifyContent:'center'}} onPress={()=> navigation.replace('Down')}>
                             <Text style = {{
                         color:'white', fontWeight:'bold',textAlign:'center'
                     }}>Get Started</Text>
