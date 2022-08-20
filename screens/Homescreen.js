@@ -21,7 +21,7 @@ render() {
   return (
     <SafeAreaView className='pt-1 mx-4' style={width}>
       <Header/>
-      <Stats/>     
+      <Stats />     
     </SafeAreaView>
   );
 }
