@@ -65,7 +65,7 @@ const OnboardingItems = ({navigation}) => {
                 {
                     currentSlideIndex == slides.length - 1 ?
                 <View  style = {{height: 50, backgroundColor:'#11103d',borderRadius: 10,justifyContent: 'center',}}>
-                    <TouchableOpacity style={{justifyContent:'center'}} onPress={()=> navigation.replace('Homescreen')}>
+                    <TouchableOpacity style={{justifyContent:'center'}} onPress={()=> navigation.replace('Down')}>
                             <Text style = {{
                         color:'white', fontWeight:'bold',textAlign:'center'
                     }}>Get Started</Text>
@@ -101,6 +101,7 @@ const OnboardingItems = ({navigation}) => {
         const contentoffsetX = e.nativeEvent.contentOffset.x;
         const currentIndex = Math.round(contentoffsetX / width);
         setCurrentSlideIndex(currentIndex);
+        console.log(currentIndex);
     }
     const goNextSlide = () => {
         const nextSlideIndex = currentSlideIndex + 1;
