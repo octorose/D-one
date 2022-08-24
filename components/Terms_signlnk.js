@@ -15,12 +15,12 @@ const Terms_signlnk = ({navigation}) => {
               </TouchableOpacity>
         </View>
 
-        <View style={{flexDirection:'row'}}>
-             <Text style={{marginTop: 20}}>
-             By signing in, you accept our
+        <View style={{flexDirection:'row', justifyContent:'space-around'}}>
+             <Text className='text-xs' style={{marginTop: 5}}>
+             By signing in,you accept our
              </Text>
              <TouchableOpacity>
-            <Text style={{marginTop:20, fontWeight: 'bold', color: '#8EE1FF',  textDecorationLine: 'underline'}}> 
+            <Text style={{marginTop:4, fontWeight: 'bold', color: '#8EE1FF', paddingVertical: 0, fontSize:14}}> 
             Terms and Conditions  
               </Text>
               </TouchableOpacity>

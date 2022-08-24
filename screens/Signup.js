@@ -168,12 +168,12 @@ const Signup = () => {
 
       
 
-        <View style={{flexDirection:'row'}}>
-             <Text style={{marginTop: 20, paddingVertical: 15}}>
-             By signing in, you accept our
+        <View style={{flexDirection:'row', justifyContent:'space-around'}}>
+             <Text className='text-xs' style={{marginTop: 20, paddingVertical: 15}}>
+             By signing in,you accept our
              </Text>
              <TouchableOpacity>
-            <Text style={{marginTop:20, fontWeight: 'bold', color: '#8EE1FF', paddingVertical: 15}}> 
+            <Text style={{marginTop:20, fontWeight: 'bold', color: '#8EE1FF', paddingVertical: 15, fontSize:14}}> 
             Terms and Conditions  
               </Text>
               </TouchableOpacity>
