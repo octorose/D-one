@@ -11,6 +11,8 @@ import Notifications from './screens/Notifications';
 import Profile from './screens/Profile';
 import PhysicalActivities from './screens/PhysicalActivities';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Sign from './screens/Sign';
+import Signup from './screens/Signup';
 import react from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -121,8 +123,8 @@ function Down(){
               )}
             {/* Screens */}
             <Stack.Screen name='Sign' component={Sign}/>
-            <Stack.Screen name='Signup' component={Signup}/>
-            <Stack.Screen name='Otpverification1' component={Otpverification1}/>
+            <Stack.Screen name='SignUp' component={Signup}/>
+            {/* <Stack.Screen name='Otpverification1' component={Otpverification1}/> */}
             <Stack.Screen  name = 'Down' component={Down} options={{ headerShown: false }}/>
             <Stack.Screen name = 'Nutrition' component={Nutrition}/>
             <Stack.Screen name = 'Glucose' component={Glucose}/>

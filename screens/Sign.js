@@ -17,7 +17,7 @@ import { SocialIcon } from 'react-native-elements';
 
 import Terms_signlnk from '../components/Terms_signlnk'
 import { useNavigation } from '@react-navigation/native';
-import Wildbutton from '../components/wildbutton';
+// import Wildbutton from '../components/wildbutton';
 
 
 
@@ -43,7 +43,7 @@ const Sign = () => {
         uri: url,
       }}
       style = {{ justifyContent: 'center',
-        alignItems: 'center', width: 250, height: 200}}
+        alignItems: 'center', width: 200, height: 200, top:20}}
       />
       </View>
 

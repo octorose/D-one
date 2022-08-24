@@ -4,7 +4,7 @@ import React from 'react'
 const Signupbutt = ({navigation}) => {
   return (
     <View>
-       <TouchableOpacity onPress={navigation.navigate('Otpverification1')} style={[styles.sign_button,styles.shadowBtn,{shadowColor:'#8EE1FF'}]}>
+       <TouchableOpacity onPress={()=>navigation.navigate('Down')} style={[styles.sign_button,styles.shadowBtn,{shadowColor:'#8EE1FF'}]}>
         
         <Text >Sign up</Text>
       </TouchableOpacity>

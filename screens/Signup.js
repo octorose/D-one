@@ -8,7 +8,8 @@ import { View,
          ImageBackground,
          Dimensions,
          Platform, 
-        TouchableOpacity } from 'react-native'
+        TouchableOpacity, 
+        Image} from 'react-native'
 import React,  {useState} from 'react'
 import  {Icon} from 'react-native-elements'
 import { SocialIcon } from 'react-native-elements';
@@ -16,6 +17,7 @@ import Signupbutt from '../components/Signupbutt';
 import { useNavigation } from '@react-navigation/native';
 
 
+const url = 'https://avatars.githubusercontent.com/u/48595123?v=4'
 
 
 
@@ -27,12 +29,19 @@ const Signup = () => {
    //       check_textInputChange: false,
    //       secureTextEntry: true
    // });
-  const navigation = useNavigation();
+  const navigationi = useNavigation();
 
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
+      <Image
+      source={{
+        uri: url,
+      }}
+      style = {{ justifyContent: 'center',
+        alignItems: 'center', width: 200, height: 200, top:50}}
+      />
          <Text style={styles.text_header}>Create your Account</Text>
       </View>
 
@@ -135,7 +144,12 @@ const Signup = () => {
 
         </TouchableOpacity> */}
 
-        <Signupbutt navigation={navigation} />
+
+       <TouchableOpacity onPress={()=>navigationi.navigate('Down')} style={[styles.sign_button,styles.shadowBtn,{shadowColor:'#8EE1FF'}]}>
+        
+        <Text >Sign up</Text>
+      </TouchableOpacity>
+
         {/* <TouchableOpacity style={[styles.sign_button,styles.shadowBtn,{shadowColor:'#8EE1FF'}]}>
         
           <Text style={styles.loginText}>Sign up</Text>
@@ -187,10 +201,11 @@ const styles = StyleSheet.create({
       },
   
     header: {
-        flex: 1,
-        justifyContent: 'flex-end',
-        paddingHorizontal: 20,
-        paddingBottom: 50,
+      flex: 1,
+      paddingHorizontal: 20,
+      paddingBottom: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
 
     footer: {
@@ -207,7 +222,8 @@ const styles = StyleSheet.create({
     text_header: {
        color: '#fff',
        fontWeight: 'bold',
-       fontSize: 30,
+       fontSize: 27,
+       justifyContent: 'flex-end'
     },
 
     text_footer: {

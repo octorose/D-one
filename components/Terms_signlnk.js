@@ -8,7 +8,7 @@ const Terms_signlnk = ({navigation}) => {
              <Text style={{marginTop: 20, paddingVertical: 35}}>
                  New to D-one ? 
              </Text>
-             <TouchableOpacity onPress={()=>{navigation.navigate('Signup')}}>
+             <TouchableOpacity onPress={()=>navigation.navigate('SignUp')}>
             <Text style={{marginTop:20, fontWeight: 'bold', color: '#8EE1FF',  textDecorationLine: 'underline', paddingVertical: 35}}> 
                   Sign Up Now
               </Text>
