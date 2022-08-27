@@ -23,13 +23,39 @@ import { useNavigation } from '@react-navigation/native';
 
 const Sign = () => {
 
-   // const [data, setData] = React.useState ({
-   //       email: '',
-   //       password:'',
-   //       check_textInputChange: false,
-   //       secureTextEntry: true
-   // });
-
+  const [data, setData] = React.useState({
+    Email: "",
+    password: "",
+    check_textInputChange: false,
+    secureTextEntry: true,
+});
+   const handlePasswordChange = (val) => {
+    setData({
+        ...data,
+        password: val,
+    });
+};
+   const updateSecureTextEntry = () => {
+    setData({
+        ...data,
+        secureTextEntry: !data.secureTextEntry,
+    });
+};
+const setEmail = (Email) => {
+  console.log(Email);
+  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+  if (reg.test(Email) === false) {
+    console.log("Email is Not Correct");
+    setData({...data, Email: Email })
+    return true;
+  }
+  else {
+    setData({...data, Email: Email })
+    console.log("Email is Correct");
+    return false;
+  }
+  
+}
   const navigation = useNavigation();
    const url = 'https://avatars.githubusercontent.com/u/48595123?v=4'
 
@@ -42,7 +68,7 @@ const Sign = () => {
         uri: url,
       }}
       style = {{ justifyContent: 'center',
-        alignItems: 'center', width: 250, height: 200}}
+        alignItems: 'center', width: 200, height: 200, top:20}}
       />
       </View>
 
@@ -63,18 +89,23 @@ const Sign = () => {
            placeholder="Email or Username"
            style={styles.textInput}
            autoCapitalize="none"
-         //   onChangeText={(email) => setEmail(email)}
+           onChangeText={(email) => setEmail(email)}
            keyboardType={'email-address'}
          />
 
+
             
-           {/* <Icon
-               name='check-circle'
-               type='font-awesome'
-               color='green'
-               size={20}
-               />
-               */}
+           {/* { 
+           setEmail ? (<Icon name='exclamation-circle' color='red' size={20} type='font-awesome'/>):(
+
+             <Icon
+                name='check-circle'
+                type='font-awesome'
+                color='green'
+                size={20}
+                />
+                )
+               } */}
           </View>
          
 
@@ -91,19 +122,28 @@ const Sign = () => {
            placeholder="Password"
            style={styles.textInput}
            autoCapitalize="none"
-           secureTextEntry={true}
+           secureTextEntry={data.secureTextEntry ? true : false}
+           onChangeText={(val) => handlePasswordChange(val)}
          />
 
-            {/* <TouchableOpacity
-            // onPress={ updateSecureTextEntry }
+            <TouchableOpacity
+            onPress={ updateSecureTextEntry }
             > 
-            <Icon
-               name='eye'
-               type='font-awesome'
-               color='grey'
-               size={20}
-               />
-               </TouchableOpacity> */}
+            {
+            data.secureTextEntry ? (
+                            <Icon
+                               name='eye'
+                               type='font-awesome'
+                               color='grey'
+                               size={20}
+                               />) : (    <Icon
+                                name='eye-slash'
+                                type='font-awesome'
+                                color='grey'
+                                size={20}
+                                />)
+                          }
+               </TouchableOpacity>
           </View>
          
 
