@@ -17,7 +17,6 @@ import { SocialIcon } from 'react-native-elements';
 
 import Terms_signlnk from '../components/Terms_signlnk'
 import { useNavigation } from '@react-navigation/native';
-import Wildbutton from '../components/wildbutton';
 
 
 

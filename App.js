@@ -40,7 +40,7 @@ react.useEffect( () => {
               )}
             {/* Screens */}
             {/* fiiiw<Stack.Screen name = 'Homescreen' component={Homescreen}/> */}
-            {/* fiiiw<Stack.Screen name='Otpverification2' component={Otpverification2}/> */}
+            <Stack.Screen name='Otpverification2' component={Otpverification2}/>
             <Stack.Screen name='Sign' component={Sign}/>
             <Stack.Screen name='Signup' component={Signup}/>
             <Stack.Screen name='Otpverification1' component={Otpverification1}/>

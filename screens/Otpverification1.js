@@ -33,13 +33,13 @@ const Otpverification1 = () => {
 
        <View style={styles.footer}>
          <Text style={styles.text_footer} >We will send you an One Time Password on this mobile number </Text>
-         <Text style={styles.text}>Enter Mobile Number</Text>
+         <Text style={styles.text}>Enter phone number</Text>
 
          <PhoneInput
             defaultValue={phoneNumber}
          />
 
- <TouchableOpacity style={styles.get_OTP}>
+ <TouchableOpacity style={[styles.get_OTP,styles.shadowBtn,{shadowColor:'#8EE1FF'}]}>
           <Text >Get OTP</Text>
         </TouchableOpacity>
 
@@ -94,17 +94,38 @@ text: {
           width: 330,
           padding: 30,
           fontSize: 20,
+          
           color: 'grey',
          
   
      },
+
+     get_OTP: {
+      borderRadius: 14,
+      height: 50,
+      alignItems: "center",
+      justifyContent: "center",
+      marginTop: 40,
+      backgroundColor: "#8EE1FF",
+          
+          
+        },
+
+        shadowBtn: {
+          shadowOffset: {width:1, height: 10},
+          shadowOpacity: 0.4,
+          shadowRadius: 3,
+          elevation: 15
+        },
+        
   
   
   
    
 
     });
-export default Otpverification1
+    
+    export default Otpverification1
 
 
 
