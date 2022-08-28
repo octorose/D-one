@@ -56,7 +56,7 @@ const Signup = () => {
                size={18}
                />
          <TextInput 
-           placeholder="Email or Username"
+           placeholder="Email"
            style={styles.textInput}
            autoCapitalize="none"
          //   onChangeText={(email) => setEmail(email)}
