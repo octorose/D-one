@@ -1,0 +1,41 @@
+const { check, validationResult } = require("express-validator");
+
+exports.ValidateUserSignup = [
+  check("Username")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Name is required")
+    .not()
+    .isString()
+    .withMessage("Must be a valide name")
+    .isLength({ min: 3, max: 20 })
+    .withMessage("Username must be within 3 to 20 characters!"),
+  check("Email").normalizeEmail().isEmail().withMessage("invalide email"),
+  check("Password")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("The Password is empty")
+    .isLength({ min: 8 })
+    .withMessage("your password must be within 8 characters at least!"),
+  check("ConfirmePassword")
+    .trim()
+    .not()
+    .isEmpty()
+    .custom((value, { req }) => {
+      if (value != req.body.Password) {
+        throw new Error("Both passwords must be same!");
+      }
+      return true;
+    }),
+];
+
+exports.UserValidation = (req, res, next) => {
+  const result = validationResult(req).array();
+  if (!result.length) {
+    next();
+  }
+  const error = result[0].msg;
+  res.json({ success: false, message: error });
+};
