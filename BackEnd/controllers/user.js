@@ -13,6 +13,7 @@ exports.creatUser = async (req, res) => {
         Email,
         Password, 
         Username,
+        // ConfirmePassword
       });
       res.json(user);
       await user.save();
