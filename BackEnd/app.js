@@ -16,6 +16,16 @@ const app = express();
 
 app.use(express.json());
 app.use(userRouter);
+
+// const test = async (Email, Password) =>{
+//   const user = await User.findOne({Email: Email});
+//   const result = await user.ComparePassword(Password);
+//   console.log(result);
+// }
+// test('aaaaallouchhatim@gmail.com', 'hallouch13qq7@');
+// *******************************************
+// testing done and noice
+
 app.get("/test", (req, res) => {
   res.send("please");
 });

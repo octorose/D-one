@@ -6,7 +6,6 @@ exports.ValidateUserSignup = [
     .not()
     .isEmpty()
     .withMessage("Name is required")
-    .not()
     .isString()
     .withMessage("Must be a valide name")
     .isLength({ min: 3, max: 20 })
@@ -33,9 +32,17 @@ exports.ValidateUserSignup = [
 
 exports.UserValidation = (req, res, next) => {
   const result = validationResult(req).array();
-  if (!result.length) {
-    next();
-  }
+  if (!result.length) return next();
+
   const error = result[0].msg;
   res.json({ success: false, message: error });
 };
+
+exports.SigninValidation = [
+  check("Email").trim().isEmail().withMessage("Email & password required!"),
+  check("Password")
+    .trim()
+    .not()
+    .isEmpty()
+    .withMessage("Email & password required!"),
+];
