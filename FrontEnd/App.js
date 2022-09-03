@@ -17,6 +17,9 @@ import react from 'react';
 import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AddData from './screens/AddData';
+import Ask from './screens/Ask';
+import glucosestats from './screens/Glucosestats';
+import Glucosestats from './screens/Glucosestats';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -122,16 +125,19 @@ function Down(){
               <Stack.Screen name="Prelogin" component={Prelogin} />
               )}
             {/* Screens */}
-            <Stack.Screen name='Sign' component={Sign}/>
+             <Stack.Screen name='Sign' component={Sign}/>
              <Stack.Screen name='SignUp' component={Signup}/> 
             {/* <Stack.Screen name='Otpverification1' component={Otpverification1}/>
             <Stack.Screen name='Otpverification2' component={Otpverification2}/> */}
             <Stack.Screen  name = 'Down' component={Down} options={{ headerShown: false }}/>
             {/* <Stack.Screen name = 'Nutrition' component={Nutrition}/> */}
             <Stack.Screen name = 'Glucose' component={Glucose}/>
+            <Stack.Screen name = 'Glucosestats' component={Glucosestats}/>
+            
             {/* <Stack.Screen name = 'Insuline' component={Insuline}/>
-            <Stack.Screen name = 'PhysicalActivities' component={PhysicalActivities}/>
-          */}
+            <Stack.Screen name = 'PhysicalActivities' component={PhysicalActivities}/> */}
+            {/* <Stack.Screen name = 'Ask' component={Ask}/> */}
+         
            
           </Stack.Navigator> 
       </TailwindProvider>

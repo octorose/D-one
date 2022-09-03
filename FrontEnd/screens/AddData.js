@@ -1,12 +1,18 @@
 import { View, Text, StyleSheet, TouchableOpacity, TouchableHighlight, Image, ScrollView} from 'react-native'
 import React, { Component } from 'react'
+import { useNavigation } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Header from '../components/Header';
 
 
 
 
 const AddData = () => {
+  const navigation = useNavigation();
   return (
-   <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <Header/>
+   <View className='mt-24'>
 
 
    <View style={styles.R1}>
@@ -25,7 +31,7 @@ const AddData = () => {
        </View>
 
        <View style={styles.R2}>
-       <TouchableOpacity
+       <TouchableOpacity onPress={()=> navigation.navigate('Glucose')}
           style={[styles.profileImgContainer, { borderColor: '#D24646', borderWidth:2 }]} >
              <Image source={require('../assets/glucose.png')} style={styles.Img} />
        </TouchableOpacity>
@@ -40,6 +46,7 @@ const AddData = () => {
 
         </View>
         
+        </SafeAreaView>
 
       
   )
@@ -51,7 +58,7 @@ export default AddData
 const styles = StyleSheet.create({
     
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     

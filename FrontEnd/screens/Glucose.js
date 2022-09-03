@@ -1,6 +1,7 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, SafeAreaView, TouchableOpacity, TextInput } from "react-native";
 import Svg, { G, Circle } from "react-native-svg";
+import Header from "../components/Header";
 
 const Glucose = () => {
   const radius = 70;
@@ -15,9 +16,22 @@ const Glucose = () => {
     circleCircumference - (circleCircumference * percentage) / 100;
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView className='mx-5'>
+      <Header/> 
+      <View  className=' mt-7 flex-1 flex-wrap flex-row justify-between ' >
+                    <TouchableOpacity >
+                        <Text style = {{
+                    color:'#11103d'
+                }}>Back</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity >
+                        <Text style = {{
+                    color:'#11103d'
+                }}>Next</Text>
+                    </TouchableOpacity>
+                </View>
       <View style={styles.graphWrapper}>
-        <Svg height="160" width="160" viewBox="0 0 180 180">
+        <Svg height="80%" width="80%" viewBox="0 0 180 180">
           <G rotation={-90} originX="90" originY="90">
             <Circle
               cx="50%"
@@ -40,29 +54,35 @@ const Glucose = () => {
             />
           </G>
         </Svg>
-        <Text style={styles.text}>{spentAmount}mg/l</Text>
+        <View style={styles.text}>
+        <TextInput  placeholder='- - -' maxLength={3} keyboardType="decimal-pad" />
+        <Text className='mt-2'>Mg/L</Text>
+        </View>
+
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 export default Glucose;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
+
   graphWrapper: {
     alignItems: "center",
     justifyContent: "center",
+    height:'55%'
   },
   text: {
     position: "absolute",
     textAlign: "center",
     fontWeight: "600",
-    fontSize: 18,
+    // fontSize: 18,
     color: "#394867",
+    width:90,
+    height:30,
+    borderRadius:10,
+    flexDirection:'row',
+    justifyContent:'center'
   },
 });
