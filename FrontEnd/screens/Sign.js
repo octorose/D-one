@@ -86,7 +86,7 @@ const setEmail = (Email) => {
                size={18}
                />
          <TextInput 
-           placeholder="Email or Username"
+           placeholder="Username"
            style={styles.textInput}
            autoCapitalize="none"
            onChangeText={(email) => setEmail(email)}

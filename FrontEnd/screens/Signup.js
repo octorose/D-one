@@ -23,6 +23,41 @@ const url = 'https://avatars.githubusercontent.com/u/48595123?v=4'
 
 const Signup = () => {
 
+  const [data, setData] = React.useState({
+    Email: "",
+    password: "",
+    check_textInputChange: false,
+    secureTextEntry: true,
+});
+   const handlePasswordChange = (val) => {
+    setData({
+        ...data,
+        password: val,
+    });
+};
+   const updateSecureTextEntry = () => {
+    setData({
+        ...data,
+        secureTextEntry: !data.secureTextEntry,
+    });
+};
+const setEmail = (Email) => {
+  console.log(Email);
+  let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+  if (reg.test(Email) === false) {
+    console.log("Email is Not Correct");
+    setData({...data, Email: Email })
+    return true;
+  }
+  else {
+    setData({...data, Email: Email })
+    console.log("Email is Correct");
+    return false;
+  }
+  
+}
+
+
    // const [data, setData] = React.useState ({
    //       email: '',
    //       password:'',
@@ -61,18 +96,25 @@ const Signup = () => {
            autoCapitalize="none"
          //   onChangeText={(email) => setEmail(email)}
            keyboardType={'email-address'}
-         />
-
-            
-           {/* <Icon
-               name='check-circle'
-               type='font-awesome'
-               color='green'
-               size={20}
-               /> */}
-              
+         /> 
           </View>
          
+          <Text style={[styles.text_footer, {marginTop: 25}]} >Username </Text>
+          <View style={styles.action} >
+               <Icon
+               name='user'
+               type='font-awesome'
+               color='grey'
+               size={18}
+               />
+         <TextInput 
+           placeholder="Username"
+           style={styles.textInput}
+           autoCapitalize="none"
+         //   onChangeText={(email) => setEmail(email)}
+           keyboardType={'email-address'}
+         /> 
+          </View>
 
          
           <Text style={[styles.text_footer, {marginTop: 25}]} >Password </Text>
@@ -90,16 +132,24 @@ const Signup = () => {
            secureTextEntry={true}
          />
 
-            {/* <TouchableOpacity
-            // onPress={ updateSecureTextEntry }
+          <TouchableOpacity
+            onPress={ updateSecureTextEntry }
             > 
-            <Icon
-               name='eye'
-               type='font-awesome'
-               color='grey'
-               size={20}
-               />
-               </TouchableOpacity> */}
+            {
+            data.secureTextEntry ? (
+                            <Icon
+                               name='eye'
+                               type='font-awesome'
+                               color='grey'
+                               size={20}
+                               />) : (    <Icon
+                                name='eye-slash'
+                                type='font-awesome'
+                                color='grey'
+                                size={20}
+                                />)
+                          }
+              </TouchableOpacity>
           </View>
          
           <Text style={[styles.text_footer, {marginTop: 25}]} >Confirm Password </Text>
@@ -117,32 +167,28 @@ const Signup = () => {
            secureTextEntry={true}
          />
 
-            {/* <TouchableOpacity
-            // onPress={ updateSecureTextEntry }
+<TouchableOpacity
+            onPress={ updateSecureTextEntry }
             > 
-            <Icon
-               name='eye'
-               type='font-awesome'
-               color='grey'
-               size={20}
-               />
-               </TouchableOpacity> */}
+            {
+            data.secureTextEntry ? (
+                            <Icon
+                               name='eye'
+                               type='font-awesome'
+                               color='grey'
+                               size={20}
+                               />) : (    <Icon
+                                name='eye-slash'
+                                type='font-awesome'
+                                color='grey'
+                                size={20}
+                                />)
+                          }
+               </TouchableOpacity>
           </View>
 
 
-          {/* <TouchableOpacity style={styles.button}>
-             <LinearGradient 
-                colors= {['#08d4c4', '#01ab9d']}
-                style={styles.signin}
-             >
-               
-            
 
-          <Text style={[styles.SigninText, {color: '#fff'}]}>
-                   Sign in</Text>
-             </LinearGradient>
-
-        </TouchableOpacity> */}
 
 
        <TouchableOpacity onPress={()=>navigationi.navigate('Down')} style={[styles.sign_button,styles.shadowBtn,{shadowColor:'#8EE1FF'}]}>
@@ -150,12 +196,9 @@ const Signup = () => {
         <Text >Sign up</Text>
       </TouchableOpacity>
 
-        {/* <TouchableOpacity style={[styles.sign_button,styles.shadowBtn,{shadowColor:'#8EE1FF'}]}>
-        
-          <Text style={styles.loginText}>Sign up</Text>
-        </TouchableOpacity> */}
+       
 
-        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent:'center', paddingVertical: 50, paddingBottom: 5}}>
+        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent:'center', paddingVertical: 20, paddingBottom: 5}}>
         <Text > ────    Or sign in with    ────</Text>
         </View>
         
