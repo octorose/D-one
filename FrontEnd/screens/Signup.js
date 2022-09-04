@@ -15,32 +15,68 @@ import {
 import React, { useState } from "react";
 import { Icon } from "react-native-elements";
 import { SocialIcon } from "react-native-elements";
-import Signupbutt from "../components/Signupbutt";
 import { useNavigation } from "@react-navigation/native";
 
 const url = "https://avatars.githubusercontent.com/u/48595123?v=4";
 
+const isValidObjField = (obj) => {
+  return Object.values(obj).every((value) => value.trim());
+};
+const updateError = (error, stateUpdater) => {
+  stateUpdater(error);
+  setTimeout(() => {
+    stateUpdater("");
+  }, 2500);
+};
+const isValidEmail = (value) => {
+  const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return regex.test(value);
+};
 const Signup = () => {
   const [data, setData] = useState({
     Email: "",
     Username: "",
     Password: "",
     ConfimPassword: "",
+  });
+  const [security, setSecurity] = useState({
     check_textInputChange: false,
     secureTextEntry: true,
   });
+  const [error, seterror] = useState("");
   const { Email, Username, Password, ConfimPassword } = data;
   const handlechangeText = (value, fieldname) => {
     setData({ ...data, [fieldname]: value });
   };
 
   const updateSecureTextEntry = () => {
-    setData({
-      ...data,
-      secureTextEntry: !data.secureTextEntry,
+    setSecurity({
+      ...security,
+      secureTextEntry: !security.secureTextEntry,
     });
   };
-
+  const isValidForm = () => {
+    if (!isValidObjField(data))
+      return updateError("Required all fields!", seterror);
+    if (!Username.trim() || Username.length < 3)
+      return updateError("invalide Username!", seterror);
+    if (!isValidEmail(Email))
+      return updateError("this email is not valide", seterror);
+    if (!Password.trim() || Password.length < 8)
+      return updateError(
+        "the password must contain at least 8 characters",
+        seterror
+      );
+    if (Password !== ConfimPassword)
+      return () => updateError("Passwords does not matches", seterror);
+    return true;
+  };
+  const submitform = () => {
+    if (isValidForm()) {
+      // submit form
+      console.log(data);
+    }
+  };
   const navigationi = useNavigation();
 
   return (
@@ -58,11 +94,12 @@ const Signup = () => {
             top: 50,
           }}
         />
+        {error ? <Text>{error}</Text> : null}
         <Text style={styles.text_header}>Create your Account</Text>
       </View>
 
       <View style={styles.footer}>
-        <Text style={styles.text_footer}>Email </Text>
+        <Text style={styles.text_footer}>Email</Text>
 
         <View style={styles.action}>
           <Icon name="user" type="font-awesome" color="grey" size={18} />
@@ -98,11 +135,11 @@ const Signup = () => {
             style={styles.textInput}
             autoCapitalize="none"
             onChangeText={(value) => handlechangeText(value, "Password")}
-            secureTextEntry={data.secureTextEntry ? true : false}
+            secureTextEntry={security.secureTextEntry ? true : false}
           />
 
           <TouchableOpacity onPress={updateSecureTextEntry}>
-            {data.secureTextEntry ? (
+            {security.secureTextEntry ? (
               <Icon name="eye" type="font-awesome" color="grey" size={20} />
             ) : (
               <Icon
@@ -126,7 +163,7 @@ const Signup = () => {
             style={styles.textInput}
             autoCapitalize="none"
             onChangeText={(value) => handlechangeText(value, "ConfimPassword")}
-            secureTextEntry={data.secureTextEntry ? true : false}
+            secureTextEntry={security.secureTextEntry ? true : false}
           />
 
           <TouchableOpacity onPress={updateSecureTextEntry}>
@@ -144,7 +181,10 @@ const Signup = () => {
         </View>
 
         <TouchableOpacity
-          onPress={() => navigationi.navigate("Down")}
+          onPress={
+            submitform
+            // () => navigationi.navigate("Down")
+          }
           style={[
             styles.sign_button,
             styles.shadowBtn,
