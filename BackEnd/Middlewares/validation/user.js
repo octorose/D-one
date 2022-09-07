@@ -5,7 +5,7 @@ exports.ValidateUserSignup = [
     .trim()
     .not()
     .isEmpty()
-    .withMessage("Name is required")
+    .withMessage("Nameo is required")
     .isString()
     .withMessage("Must be a valide name")
     .isLength({ min: 3, max: 20 })
@@ -18,7 +18,7 @@ exports.ValidateUserSignup = [
     .withMessage("The Password is empty")
     .isLength({ min: 8 })
     .withMessage("your password must be within 8 characters at least!"),
-  check("ConfirmePassword")
+  check("ConfimPassword")
     .trim()
     .not()
     .isEmpty()
@@ -31,11 +31,12 @@ exports.ValidateUserSignup = [
 ];
 
 exports.UserValidation = (req, res, next) => {
+  // console.log(validationResult(req));
   const result = validationResult(req).array();
   if (!result.length) return next();
 
   const error = result[0].msg;
-  res.json({ success: false, message: error });
+  res.json({ success: false, message: "waa" });
 };
 
 exports.SigninValidation = [

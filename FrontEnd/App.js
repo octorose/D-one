@@ -32,10 +32,10 @@ const App = () => {
   const [isAppFirstlaunched, setIsAppFirstLaunched] = react.useState(null);
   const fetchApi = async () => {
     try {
-      const res = await axios.get("http://192.168.0.100:8000/");
+      const res = await axios.get("http://192.168.0.103:8000/");
       console.log(res.data);
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
   useEffect(() => {
@@ -206,8 +206,8 @@ const App = () => {
               <Stack.Screen name="Prelogin" component={Prelogin} />
             )}
             {/* Screens */}
-            <Stack.Screen name="Sign" component={Sign} />
-            <Stack.Screen name="SignUp" component={Signup} />
+            {/* <Stack.Screen name="Sign" component={Sign} /> */}
+            {/* <Stack.Screen name="SignUp" component={Signup} /> */}
             {/* <Stack.Screen name='Otpverification1' component={Otpverification1}/>
             <Stack.Screen name='Otpverification2' component={Otpverification2}/> */}
             <Stack.Screen

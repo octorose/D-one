@@ -1,14 +1,8 @@
-import { StatusBar } from "expo-status-bar";
 import {
   View,
   Text,
-  button,
   TextInput,
-  ScrollView,
   StyleSheet,
-  ImageBackground,
-  Dimensions,
-  Platform,
   TouchableOpacity,
   Image,
 } from "react-native";
@@ -16,6 +10,9 @@ import React, { useState } from "react";
 import { Icon } from "react-native-elements";
 import { SocialIcon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
+import client from "../API/client";
+// import { Formik } from "formik";
+// import * as Yup from 'yup';
 
 const url = "https://avatars.githubusercontent.com/u/48595123?v=4";
 
@@ -71,10 +68,19 @@ const Signup = () => {
       return () => updateError("Passwords does not matches", seterror);
     return true;
   };
-  const submitform = () => {
+  const submitform = async () => {
     if (isValidForm()) {
       // submit form
-      console.log(data);
+      // console.log({...data});
+      const response = await client.post(
+        '/creat-user',{
+       Username,
+       Email,
+       Password,
+       ConfimPassword
+        }
+      );
+      console.log(response.data);
     }
   };
   const navigationi = useNavigation();
@@ -97,7 +103,12 @@ const Signup = () => {
         {error ? <Text>{error}</Text> : null}
         <Text style={styles.text_header}>Create your Account</Text>
       </View>
-
+      {/* <Formik>
+      {()=>{
+        return <>
+        </>
+      }}
+    </Formik> */}
       <View style={styles.footer}>
         <Text style={styles.text_footer}>Email</Text>
 
