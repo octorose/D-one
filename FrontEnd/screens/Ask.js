@@ -1,32 +1,67 @@
 import { StatusBar } from 'expo-status-bar';
-import { View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, Image, Button, TouchableOpacity, Animated, SafeAreaView} from 'react-native'
+import React , { useRef }from 'react'
+import { useNavigation } from '@react-navigation/native';
+
+
 
 const Ask = () => {
+
+ 
+
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  const fadeIn = () => {
+    // Will change fadeAnim value to 1 in 5 seconds
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 5000
+    }).start();
+  };
+
+  const navigation = useNavigation();
+
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
     <View style={styles.header}>
       <Text style={{fontSize:20, textAlign:'center',paddingVertical: 40, fontWeight:'bold', }}>Would you like to Take a  Insuline Correction Dose?</Text>
     </View>
 
     <View style={styles.footer}>
 
+
+    {/* <Animated.View
+        style={[
+          styles.fadingContainer,
+          {
+            opacity: fadeAnim
+          }
+        ]}
+      >
+       <Image source={require('../assets/Bluehand.png')} style={styles.Img} />
+      </Animated.View> */}
+
     <Image source={require('../assets/ask.png')} style={styles.Img} />
+    {/* <Image source={require('../assets/Bluehand.png')} style={styles.Img} /> */}
 
-    <TouchableOpacity style={[styles.acceptbutton,styles.shadowBtn,{shadowColor:'#8EE1FF'}]}>
-        
-        <Text style={styles.loginText}>Yes!</Text>
+      
+    
+
+
+      <TouchableOpacity  onPress={()=>navigation.navigate('Animation')} style={[styles.acceptbutton,styles.shadowBtn]} >
+     
+          <Text >Yes!</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.denybutton,styles.shadowBtn,{shadowColor:'#8EE1FF'}]}>
-        
-        <Text style={styles.loginText}>Nah, I'm good!</Text>
+      <TouchableOpacity style={[styles.denybutton,styles.shadowBtn]}>
+          <Text >Nah, I'm good!</Text>
       </TouchableOpacity>
+
 
 
     </View>
 
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -69,7 +104,7 @@ const styles = StyleSheet.create({
 
     
    acceptbutton: {
-    width: "80%",
+    width: "100%",
     borderRadius: 14,
     height: 50,
     alignItems: "center",
@@ -78,7 +113,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#8EE1FF",
   },
   denybutton: {
-    width: "80%",
+    width: "100%",
     borderRadius: 14,
     height: 50,
     alignItems: "center",
@@ -92,7 +127,11 @@ const styles = StyleSheet.create({
     shadowOffset: {width:1, height: 10},
     shadowOpacity: 0.4,
     shadowRadius: 3,
-    elevation: 15
+    elevation: 15,
+    shadowColor:'#8EE1FF'
   },
+
+
+ 
 
 })

@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, SafeAreaView, TouchableOpacity, TextInput } from "react-native";
 import Svg, { G, Circle } from "react-native-svg";
 import Header from "../components/Header";
 
 const Glucose = () => {
+  const [inputval,Setinputval] = useState('')
   const radius = 70;
   const circleCircumference = 2 * Math.PI * radius;
 
   const leftToSpendAmount = 600;
   const targetAmount = 1000;
-
   const spentAmount = targetAmount - leftToSpendAmount;
   const percentage = (spentAmount / targetAmount) * 100;
   const strokeDashoffset =
@@ -55,7 +55,7 @@ const Glucose = () => {
           </G>
         </Svg>
         <View style={styles.text}>
-        <TextInput  placeholder='- - -' maxLength={3} keyboardType="decimal-pad" />
+        <TextInput   placeholder='- - -' maxLength={3} keyboardType="decimal-pad" />
         <Text className='mt-2'>Mg/L</Text>
         </View>
 
