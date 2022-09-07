@@ -7,7 +7,7 @@ exports.creatUser = async (req, res) => {
   const isNewEmail = await User.isEmailinUse(Email);
   if (!isNewEmail)
     return res.json({ success: false, message: "already used email" });
-  //check used username
+  //check used Username
   const isNewUser = await User.isUsernameinUse(Username);
   if (!isNewUser)
     return res.json({ success: false, message: "already used Username" });

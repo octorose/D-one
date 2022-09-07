@@ -3,7 +3,7 @@ require("dotenv").config();
 require("./models/db");
 
 const userRouter = require("./routes/user");
-const User = require("./models/user")
+const User = require("./models/user");
 const app = express();
 
 // app.use((req, res, next) => {
@@ -31,7 +31,7 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("wa TFOO");
+  res.json({success:true, message:'Back End Zone 🔥'});
 });
 
 app.listen(8000, () => {
