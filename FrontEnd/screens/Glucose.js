@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, SafeAreaView, TouchableOpacity, TextInput } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  SafeAreaView,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 import Svg, { G, Circle } from "react-native-svg";
 import Header from "../components/Header";
 
 const Glucose = () => {
-  const [inputval,Setinputval] = useState('')
+  const [inputval, Setinputval] = useState("");
   const radius = 70;
   const circleCircumference = 2 * Math.PI * radius;
 
@@ -16,20 +23,28 @@ const Glucose = () => {
     circleCircumference - (circleCircumference * percentage) / 100;
 
   return (
-    <SafeAreaView className='mx-5'>
-      <Header/> 
-      <View  className=' mt-7 flex-1 flex-wrap flex-row justify-between ' >
-                    <TouchableOpacity >
-                        <Text style = {{
-                    color:'#11103d'
-                }}>Back</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity >
-                        <Text style = {{
-                    color:'#11103d'
-                }}>Next</Text>
-                    </TouchableOpacity>
-                </View>
+    <SafeAreaView className="mx-5">
+      <Header />
+      <View className=" mt-7 flex-1 flex-wrap flex-row justify-between ">
+        <TouchableOpacity>
+          <Text
+            style={{
+              color: "#11103d",
+            }}
+          >
+            Back
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text
+            style={{
+              color: "#11103d",
+            }}
+          >
+            Next
+          </Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.graphWrapper}>
         <Svg height="80%" width="80%" viewBox="0 0 180 180">
           <G rotation={-90} originX="90" originY="90">
@@ -55,10 +70,13 @@ const Glucose = () => {
           </G>
         </Svg>
         <View style={styles.text}>
-        <TextInput   placeholder='- - -' maxLength={3} keyboardType="decimal-pad" />
-        <Text className='mt-2'>Mg/L</Text>
+          <TextInput
+            placeholder="- - -"
+            maxLength={3}
+            keyboardType="decimal-pad"
+          />
+          <Text className="mt-2">Mg/L</Text>
         </View>
-
       </View>
     </SafeAreaView>
   );
@@ -67,11 +85,10 @@ const Glucose = () => {
 export default Glucose;
 
 const styles = StyleSheet.create({
-
   graphWrapper: {
     alignItems: "center",
     justifyContent: "center",
-    height:'55%'
+    height: "55%",
   },
   text: {
     position: "absolute",
@@ -79,10 +96,10 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     // fontSize: 18,
     color: "#394867",
-    width:90,
-    height:30,
-    borderRadius:10,
-    flexDirection:'row',
-    justifyContent:'center'
+    width: 90,
+    height: 30,
+    borderRadius: 10,
+    flexDirection: "row",
+    justifyContent: "center",
   },
 });

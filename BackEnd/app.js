@@ -31,7 +31,7 @@ app.get("/test", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.json({success:true, message:'Back End Zone 🔥'});
+  res.json({ success: true, message: "Back End Zone 🔥" });
 });
 
 app.listen(8000, () => {

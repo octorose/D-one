@@ -1,35 +1,9 @@
-<<<<<<< HEAD
-import { TailwindProvider } from 'tailwindcss-react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Glucose from './screens/Glucose';
-import Prelogin from './screens/Prelogin';
-import Homescreen from './screens/Homescreen';
-import Nutrition from './screens/Nutrition';
-import Insuline from './screens/Insuline';
-import Settings from './screens/Settings';
-import Notifications from './screens/Notifications';
-import Profile from './screens/Profile';
-import PhysicalActivities from './screens/PhysicalActivities';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Sign from './screens/Sign';
-import Signup from './screens/Signup';
-import react from 'react';
-import { Image, StatusBar, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import AddData from './screens/AddData';
-import Ask from './screens/Ask';
-import glucosestats from './screens/Glucosestats';
-import Glucosestats from './screens/Glucosestats';
-import Animation from './screens/Animation';
-
-
-
-=======
 import { TailwindProvider } from "tailwindcss-react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Glucose from "./screens/Glucose";
+import AddData from "./screens/AddData";
+import Glucosestats from "./screens/Glucosestats";
 import Prelogin from "./screens/Prelogin";
 import Homescreen from "./screens/Homescreen";
 import Nutrition from "./screens/Nutrition";
@@ -51,9 +25,7 @@ import {
   View,
 } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AddData from "./screens/AddData";
 import axios from "axios";
->>>>>>> 07a0600a9c2662f422284c3825882b8092df594a
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -61,7 +33,7 @@ const App = () => {
   const [isAppFirstlaunched, setIsAppFirstLaunched] = react.useState(null);
   const fetchApi = async () => {
     try {
-      const res = await axios.get("http://192.168.0.103:8000/");
+      const res = await axios.get("http://192.168.1.105:8000/");
       console.log(res.data);
     } catch (error) {
       console.log(error);
@@ -235,49 +207,24 @@ const App = () => {
               <Stack.Screen name="Prelogin" component={Prelogin} />
             )}
             {/* Screens */}
-<<<<<<< HEAD
-             {/* <Stack.Screen name='Sign' component={Sign}/>
-             <Stack.Screen name='SignUp' component={Signup}/>  */}
+
+              <Stack.Screen name='Sign' component={Sign}/> 
+             {/* <Stack.Screen name='SignUp' component={Signup}/>   */}
             {/* <Stack.Screen name='Otpverification1' component={Otpverification1}/>
             <Stack.Screen name='Otpverification2' component={Otpverification2}/> */}
             {/* <Stack.Screen  name = 'Down' component={Down} options={{ headerShown: false }}/> */}
             {/* <Stack.Screen name = 'Nutrition' component={Nutrition}/> */}
-            {/* <Stack.Screen name = 'Glucosestats' component={Glucosestats}/> */} 
-            
+            {/* <Stack.Screen name = 'Glucosestats' component={Glucosestats}/> */}
+
             {/* <Stack.Screen name = 'Insuline' component={Insuline}/>
             <Stack.Screen name = 'PhysicalActivities' component={PhysicalActivities}/> */}
-            <Stack.Screen name = 'Ask' component={Ask}/>
-            <Stack.Screen name = 'Animation' component={Animation}/>
-          <Stack.Screen name = 'Glucose' component={Glucose}/>
-           
-            
-            
-         
-           
-          </Stack.Navigator> 
-      </TailwindProvider>
-    </NavigationContainer>
-     )
-=======
-            {/* <Stack.Screen name="Sign" component={Sign} /> */}
-            {/* <Stack.Screen name="SignUp" component={Signup} /> */}
-            {/* <Stack.Screen name='Otpverification1' component={Otpverification1}/>
-            <Stack.Screen name='Otpverification2' component={Otpverification2}/> */}
-            <Stack.Screen
-              name="Down"
-              component={Down}
-              options={{ headerShown: false }}
-            />
-            {/* <Stack.Screen name = 'Nutrition' component={Nutrition}/> */}
-            <Stack.Screen name="Glucose" component={Glucose} />
-            {/* <Stack.Screen name = 'Insuline' component={Insuline}/>
-            <Stack.Screen name = 'PhysicalActivities' component={PhysicalActivities}/>
-          */}
+            {/* <Stack.Screen name="Ask" component={Ask} /> */}
+            {/* <Stack.Screen name="Animation" component={Animation} /> */}
+            {/* <Stack.Screen name="Glucose" component={Glucose} /> */}
           </Stack.Navigator>
         </TailwindProvider>
       </NavigationContainer>
     )
->>>>>>> 07a0600a9c2662f422284c3825882b8092df594a
   );
 };
 

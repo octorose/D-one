@@ -36,7 +36,7 @@ exports.UserValidation = (req, res, next) => {
   if (!result.length) return next();
 
   const error = result[0].msg;
-  res.json({ success: false, message: "waa" });
+  res.json({ success: false, message: error });
 };
 
 exports.SigninValidation = [

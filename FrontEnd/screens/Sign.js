@@ -19,7 +19,7 @@ import { SocialIcon } from "react-native-elements";
 import { isValidEmail, isValidObjField, updateError } from "../utils/methodes";
 import Terms_signlnk from "../components/Terms_signlnk";
 import { useNavigation } from "@react-navigation/native";
-
+import client from "../API/client";
 
 const Sign = () => {
   const [data, setData] = React.useState({
@@ -56,32 +56,38 @@ const Sign = () => {
     secureTextEntry: true,
   });
 
-  const submitform = () => {
+  const submitform = async () => {
     if (isValidForm()) {
       // submit form
-      console.log(data);
+      try {
+        const res = await client.post("/sign-in", { ...data });
+        console.log(res.data) ;
+        if(res.data.success){
+          setData({Email:'', Password:''})
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
     }
   };
 
   const navigation = useNavigation();
-  const url = "https://avatars.githubusercontent.com/u/48595123?v=4";
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={{
-            uri: url,
-          }}
+          source={require("../assets/images/logo.png")}
           style={{
             justifyContent: "center",
             alignItems: "center",
             width: 200,
             height: 200,
-            top: 20,
+            top: 40,
           }}
         />
-      {error ? <Text>{error}</Text> : null}
+        {error ? <Text>{error}</Text> : null}
+        <Text style={styles.text_header}>Log-In</Text>
       </View>
       <View style={styles.footer}>
         <Text style={styles.text_footer}>Email </Text>

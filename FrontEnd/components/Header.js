@@ -41,7 +41,6 @@ const greetings = {
 // 	.catch(err => console.error(err));
   
 const Header = () => {
-    let profilepic = 'https://ih1.redbubble.net/image.264256051.2667/poster,840x830,f8f8f8-pad,1000x1000,f8f8f8.u4.jpg'
 
   return (
     <View className='flex-row items-center justify-between mt-4'>
@@ -63,11 +62,9 @@ const Header = () => {
         </Text>
         <Image
         source={
-            {
-                uri:profilepic
-            }
+          require("../assets/images/logo.png")
         }
-        className = 'h-16 w-16'
+        className = 'h-24 w-24'
         />
     </View>
 

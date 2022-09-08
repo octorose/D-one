@@ -11,10 +11,7 @@ import { Icon } from "react-native-elements";
 import { SocialIcon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import client from "../API/client";
-// import { Formik } from "formik";
-// import * as Yup from 'yup';
 
-const url = "https://avatars.githubusercontent.com/u/48595123?v=4";
 
 const isValidObjField = (obj) => {
   return Object.values(obj).every((value) => value.trim());
@@ -72,14 +69,12 @@ const Signup = () => {
     if (isValidForm()) {
       // submit form
       // console.log({...data});
-      const response = await client.post(
-        '/creat-user',{
-       Username,
-       Email,
-       Password,
-       ConfimPassword
-        }
-      );
+      const response = await client.post("/creat-user", {
+        Username,
+        Email,
+        Password,
+        ConfimPassword,
+      });
       console.log(response.data);
     }
   };
@@ -89,9 +84,7 @@ const Signup = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={{
-            uri: url,
-          }}
+          source={require('../assets/images/logo.png')}
           style={{
             justifyContent: "center",
             alignItems: "center",
@@ -103,17 +96,11 @@ const Signup = () => {
         {error ? <Text>{error}</Text> : null}
         <Text style={styles.text_header}>Create your Account</Text>
       </View>
-      {/* <Formik>
-      {()=>{
-        return <>
-        </>
-      }}
-    </Formik> */}
       <View style={styles.footer}>
         <Text style={styles.text_footer}>Email</Text>
 
         <View style={styles.action}>
-          <Icon name="user" type="font-awesome" color="grey" size={18} />
+          <Icon name="at" type="font-awesome" color="grey" size={18}  />
           <TextInput
             value={Email}
             placeholder="Email"
@@ -178,7 +165,7 @@ const Signup = () => {
           />
 
           <TouchableOpacity onPress={updateSecureTextEntry}>
-            {data.secureTextEntry ? (
+            {security.secureTextEntry ? (
               <Icon name="eye" type="font-awesome" color="grey" size={20} />
             ) : (
               <Icon

@@ -1,6 +1,8 @@
 const { use } = require("bcrypt/promises");
 const User = require("../models/user");
 const JWT = require("jsonwebtoken");
+const sharp = require("sharp");
+const cloudinary = require("../helper/imageUpload");
 exports.creatUser = async (req, res) => {
   const { Email, Password, Username } = req.body;
   //check used Email
@@ -40,9 +42,40 @@ exports.UserSignin = async (req, res) => {
   const token = JWT.sign({ userId: user._id }, process.env.JWT_SECRET, {
     expiresIn: "1d",
   });
+  const userInfo = {
+    Username: user.Username,
+    Email: user.Email,
+    avatar: user.avatar ? user.avatar : '', 
+  }
   res.json({
     success: true,
-    user,
+    user: userInfo,
     token,
   });
+};
+
+exports.uploadProfile = async (req, res) => {
+  const { user } = req;
+  if (!user)
+    return res
+      .status(401)
+      .json({ success: false, message: "unauthorized access" });
+  try {
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      public_id: `${user._id}_profile`,
+      width: 500,
+      height: 500,
+      crop: "fill",
+    });
+
+    await User.findByIdAndUpdate(user._id, { avatar:result.url });
+    res
+      .status(201)
+      .json({ success: true, message: "Your profile picture is updated" });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Your profile picture is not updated" });
+    console.log("error while upploading image ", error);
+  }
 };
