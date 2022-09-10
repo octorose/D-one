@@ -209,14 +209,14 @@ const App = () => {
             )}
             {/* Screens */}
 
-              {/* <Stack.Screen name='Sign' component={Sign}/>  */}
-             {/* <Stack.Screen name='SignUp' component={Signup}/>   */}
+              <Stack.Screen name='Sign' component={Sign}/> 
+             <Stack.Screen name='SignUp' component={Signup}/>  
+             <Stack.Screen name='Uploadprofile' component={Uploadprofile}/>
             {/* <Stack.Screen name='Otpverification1' component={Otpverification1}/>
             <Stack.Screen name='Otpverification2' component={Otpverification2}/> */}
-            {/* <Stack.Screen  name = 'Down' component={Down} options={{ headerShown: false }}/> */}
+            <Stack.Screen  name = 'Down' component={Down} options={{ headerShown: false }}/>
             {/* <Stack.Screen name = 'Nutrition' component={Nutrition}/> */}
             {/* <Stack.Screen name = 'Glucosestats' component={Glucosestats}/> */}
-              <Stack.Screen name='Uploadprofile' component={Uploadprofile}/>
             {/* <Stack.Screen name = 'Insuline' component={Insuline}/>
             <Stack.Screen name = 'PhysicalActivities' component={PhysicalActivities}/> */}
             {/* <Stack.Screen name="Ask" component={Ask} /> */}

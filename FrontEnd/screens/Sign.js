@@ -64,6 +64,7 @@ const Sign = () => {
         console.log(res.data) ;
         if(res.data.success){
           setData({Email:'', Password:''})
+          navigation.replace('Down')
         }
       } catch (error) {
         console.log(error.message);

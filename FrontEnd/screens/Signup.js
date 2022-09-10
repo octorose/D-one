@@ -75,6 +75,12 @@ const Signup = () => {
         Password,
         ConfimPassword,
       });
+      if (response.data.success) {
+          // console.log('waawa');
+          const Signinres = await client.post('/sign-in',{Email, Password})
+          console.log(Signinres.data);
+          navigationi.replace('Uploadprofile', {token : Signinres.data.token})        
+      }
       console.log(response.data);
     }
   };

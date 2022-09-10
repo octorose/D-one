@@ -1,11 +1,13 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
-import React, { useState } from "react";
 import * as ImagePicker from "expo-image-picker";
+import React, { useState } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import client from "../API/client";
+import { useNavigation } from "@react-navigation/native";
 
-const Uploadprofile = () => {
+const Uploadprofile = (props) => {
   const [image, setImage] = useState(null);
   const [Progress, setProgress] = useState(0)
+  const {token} = props.route.params
   const Openimagelibrary = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -21,6 +23,7 @@ const Uploadprofile = () => {
       setImage(result.uri);
     }
   };
+  const navigationi = useNavigation();
 
   const uploadProfileImage =  async () => {
       const formdata = new FormData();
@@ -35,9 +38,12 @@ const Uploadprofile = () => {
           headers: {
             Accept: "application/json",
             "Content-Type": "multipart/form-data",
-            authorization: "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MzFhMmQwYjBjNTM3NTlmNGI0OWQ2MmQiLCJpYXQiOjE2NjI3NjE3NTEsImV4cCI6MTY2Mjg0ODE1MX0.f6uDpElfJvnBMoi17Jx19kdxl3GGZh-NuIlM1zqeG7U",
+            authorization: `JWT ${token}`,
           },
         });
+        if (res.data.success) {
+          navigationi.replace('Down')
+        }
         console.log(res.data);
     } catch (error) {
         console.log(error.message);
