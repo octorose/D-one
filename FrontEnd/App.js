@@ -40,6 +40,7 @@ const App = () => {
       console.log(error);
     }
   };
+  const pls = (route) => <Homescreen route={route} />
   useEffect(() => {
     fetchApi();
   }, []);
@@ -80,7 +81,7 @@ const App = () => {
       </TouchableOpacity>
     );
   };
-  function Down() {
+  function Down({route}) {
     return (
       <Tab.Navigator
         screenOptions={{
@@ -101,7 +102,9 @@ const App = () => {
       >
         <Tab.Screen
           name="Home"
-          component={Homescreen}
+          component={() => (
+          <Homescreen route={route} />
+          )}
           options={{
             tabBarIcon: ({ focused }) => {
               return (
@@ -212,11 +215,12 @@ const App = () => {
               <Stack.Screen name='Sign' component={Sign}/> 
              <Stack.Screen name='SignUp' component={Signup}/>  
              <Stack.Screen name='Uploadprofile' component={Uploadprofile}/>
+             <Stack.Screen  name = 'Down' component={Down} options={{ headerShown: false }}/>
             {/* <Stack.Screen name='Otpverification1' component={Otpverification1}/>
             <Stack.Screen name='Otpverification2' component={Otpverification2}/> */}
-            <Stack.Screen  name = 'Down' component={Down} options={{ headerShown: false }}/>
             {/* <Stack.Screen name = 'Nutrition' component={Nutrition}/> */}
-            {/* <Stack.Screen name = 'Glucosestats' component={Glucosestats}/> */}
+            <Stack.Screen name = 'Glucosestats' component={Glucosestats}/>
+            {/* <Stack.Screen name = 'Homescreen' component={Homescreen}/> */}
             {/* <Stack.Screen name = 'Insuline' component={Insuline}/>
             <Stack.Screen name = 'PhysicalActivities' component={PhysicalActivities}/> */}
             {/* <Stack.Screen name="Ask" component={Ask} /> */}
