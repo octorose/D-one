@@ -14,13 +14,14 @@ import Header from "../components/Header";
 import Stats from "../components/Stats";
 const Tab = createMaterialTopTabNavigator();
 const { width } = Dimensions.get("window");
-export default class Homescreen extends React.Component {
-  render() {
+const Homescreen = ({route}) =>{
+  const data = route.params
+  // console.log(route.key);
     return (
       <SafeAreaView className="pt-1 mx-4" style={width}>
-        <Header />
+        <Header data={data}/>
         <Stats />
       </SafeAreaView>
     );
-  }
 }
+export default Homescreen
