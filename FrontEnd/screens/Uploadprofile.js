@@ -42,7 +42,7 @@ const Uploadprofile = (props) => {
           },
         });
         if (res.data.success) {
-          navigationi.replace('Down')
+          navigationi.navigate('Down', res.data)
         }
         console.log(res.data);
     } catch (error) {
