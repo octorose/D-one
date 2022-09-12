@@ -16,7 +16,6 @@ const AddData = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
       <View className="mt-24">
         <View style={styles.R1}>
           <TouchableOpacity

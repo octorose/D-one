@@ -1,7 +1,7 @@
 const express = require("express");
 const { check } = require("express-validator");
 const router = express.Router();
-const { creatUser, UserSignin, uploadProfile } = require("../controllers/user");
+const { creatUser, UserSignin, uploadProfile, SignOut } = require("../controllers/user");
 const { Isauth } = require("../Middlewares/auth");
 const {
   ValidateUserSignup,
@@ -29,5 +29,6 @@ router.post(
   uploads.single("profilepic"),
   uploadProfile
 );
+router.post('/sign-out', Isauth, SignOut)
 
 module.exports = router;

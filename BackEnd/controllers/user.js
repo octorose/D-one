@@ -42,11 +42,24 @@ exports.UserSignin = async (req, res) => {
   const token = JWT.sign({ userId: user._id }, process.env.JWT_SECRET, {
     expiresIn: "1d",
   });
+  let oldTokens = user.tokens || [];
+  if (oldTokens.length) {
+    oldTokens = oldTokens.filter((t) => {
+      const Timediff = (Date.now() - parseInt(t.signedAt)) / 1000;
+      if (Timediff < 86400) {
+        return t;
+      }
+    });
+  }
+
+  await User.findByIdAndUpdate(user._id, {
+    tokens: [...oldTokens, { token, signedAt: Date.now().toString() }],
+  });
   const userInfo = {
     Username: user.Username,
     Email: user.Email,
-    avatar: user.avatar ? user.avatar : '', 
-  }
+    avatar: user.avatar ? user.avatar : "",
+  };
   res.json({
     success: true,
     user: userInfo,
@@ -68,14 +81,33 @@ exports.uploadProfile = async (req, res) => {
       crop: "fill",
     });
 
-    await User.findByIdAndUpdate(user._id, { avatar:result.url });
+    await User.findByIdAndUpdate(user._id, { avatar: result.url });
     res
       .status(201)
-      .json({ success: true, message: "Your profile picture is updated", user:{avatar:result.url}});
+      .json({
+        success: true,
+        message: "Your profile picture is updated",
+        user: { avatar: result.url },
+      });
   } catch (error) {
     res
       .status(500)
       .json({ success: false, message: "Your profile picture is not updated" });
     console.log("error while upploading image ", error);
+  }
+};
+exports.SignOut = async (req, res) => {
+  if (req.headers && req.headers.authorization) {
+    const token = req.headers.authorization.split(" ")[1];
+    if (!token) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Authorization failed!" });
+    }
+    const tokens = req.user.tokens;
+    const newTokens = tokens.filter((t) => t.token !== token);
+    await User.findByIdAndUpdate(req.user._id, { tokens: newTokens });
+    res.json({ success: true, message: "logging out successfully!" });
+    res.send("ok");
   }
 };
