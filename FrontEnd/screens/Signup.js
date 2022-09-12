@@ -52,9 +52,9 @@ const Signup = () => {
   const isValidForm = () => {
     if (!isValidObjField(data))
       return updateError("Required all fields!", seterror);
-      if (!Username.trim() || Username.length < 3)
+    if (!Username.trim() || Username.length < 3)
       return updateError("invalide Username!", seterror);
-      if (!isValidEmail(Email))
+    if (!isValidEmail(Email))
       return updateError("this email is not valide", seterror);
     if (!Password.trim() || Password.length < 8)
       return updateError(
@@ -89,165 +89,169 @@ const Signup = () => {
 
   return (
     <>
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Image
-          source={require("../assets/images/logo.png")}
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-            width: 200,
-            height: 200,
-            top: 40,
-          }}
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Image
+            source={require("../assets/images/logo.png")}
+            style={{
+              justifyContent: "center",
+              alignItems: "center",
+              width: 200,
+              height: 200,
+              top: 40,
+            }}
           />
-          {error ? <Text >{error}</Text> : null}
-        <Text style={styles.text_header}>Create your Account</Text>
-      </View>
-      <View style={styles.footer}>
-        <Text style={styles.text_footer}>Email</Text>
-
-        <View style={styles.action}>
-          <Icon name="at" type="font-awesome" color="grey" size={18} />
-          <TextInput
-            value={Email}
-            placeholder="Email"
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(value) => handlechangeText(value, "Email")}
-            keyboardType={"email-address"}
-            />
+          {error ? <Text>{error}</Text> : null}
+          <Text style={styles.text_header}>Create your Account</Text>
         </View>
+        <View style={styles.footer}>
+          <Text style={styles.text_footer}>Email</Text>
 
-        <Text style={[styles.text_footer, { marginTop: 25 }]}>Username </Text>
-        <View style={styles.action}>
-          <Icon name="user" type="font-awesome" color="grey" size={18} />
-          <TextInput
-            value={Username}
-            placeholder="Username"
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(value) => handlechangeText(value, "Username")}
-            keyboardType={"email-address"}
+          <View style={styles.action}>
+            <Icon name="at" type="font-awesome" color="grey" size={18} />
+            <TextInput
+              value={Email}
+              placeholder="Email"
+              style={styles.textInput}
+              autoCapitalize="none"
+              onChangeText={(value) => handlechangeText(value, "Email")}
+              keyboardType={"email-address"}
             />
-        </View>
+          </View>
 
-        <Text style={[styles.text_footer, { marginTop: 25 }]}>Password </Text>
-        <View style={styles.action}>
-          <Icon name="lock" type="font-awesome" color="grey" size={20} />
-          <TextInput
-            value={Password}
-            placeholder="Password"
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(value) => handlechangeText(value, "Password")}
-            secureTextEntry={security.secureTextEntry ? true : false}
+          <Text style={[styles.text_footer, { marginTop: 25 }]}>Username </Text>
+          <View style={styles.action}>
+            <Icon name="user" type="font-awesome" color="grey" size={18} />
+            <TextInput
+              value={Username}
+              placeholder="Username"
+              style={styles.textInput}
+              autoCapitalize="none"
+              onChangeText={(value) => handlechangeText(value, "Username")}
+              keyboardType={"email-address"}
+            />
+          </View>
+
+          <Text style={[styles.text_footer, { marginTop: 25 }]}>Password </Text>
+          <View style={styles.action}>
+            <Icon name="lock" type="font-awesome" color="grey" size={20} />
+            <TextInput
+              value={Password}
+              placeholder="Password"
+              style={styles.textInput}
+              autoCapitalize="none"
+              onChangeText={(value) => handlechangeText(value, "Password")}
+              secureTextEntry={security.secureTextEntry ? true : false}
             />
 
-          <TouchableOpacity onPress={updateSecureTextEntry}>
-            {security.secureTextEntry ? (
-              <Icon name="eye" type="font-awesome" color="grey" size={20} />
+            <TouchableOpacity onPress={updateSecureTextEntry}>
+              {security.secureTextEntry ? (
+                <Icon name="eye" type="font-awesome" color="grey" size={20} />
               ) : (
                 <Icon
-                name="eye-slash"
-                type="font-awesome"
-                color="grey"
-                size={20}
+                  name="eye-slash"
+                  type="font-awesome"
+                  color="grey"
+                  size={20}
                 />
-                )}
-          </TouchableOpacity>
-        </View>
+              )}
+            </TouchableOpacity>
+          </View>
 
-        <Text style={[styles.text_footer, { marginTop: 25 }]}>
-          Confirm Password{" "}
-        </Text>
-        <View style={styles.action}>
-          <Icon name="lock" type="font-awesome" color="grey" size={20} />
-          <TextInput
-            value={ConfimPassword}
-            placeholder="Confirm Password"
-            style={styles.textInput}
-            autoCapitalize="none"
-            onChangeText={(value) => handlechangeText(value, "ConfimPassword")}
-            secureTextEntry={security.secureTextEntry ? true : false}
-            />
-
-          <TouchableOpacity onPress={updateSecureTextEntry}>
-            {security.secureTextEntry ? (
-              <Icon name="eye" type="font-awesome" color="grey" size={20} />
-              ) : (
-                <Icon
-                name="eye-slash"
-                type="font-awesome"
-                color="grey"
-                size={20}
-                />
-                )}
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity
-          onPress={
-            submitform
-            // () => navigationi.navigate("Down")
-          }
-          style={[
-            styles.sign_button,
-            styles.shadowBtn,
-            { shadowColor: "#8EE1FF" },
-          ]}
-          >
-          <Text>Sign up</Text>
-        </TouchableOpacity>
-
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-            paddingVertical: 20,
-            paddingBottom: 5,
-          }}
-        >
-          <Text> ──── Or sign in with ────</Text>
-        </View>
-
-        <View style={styles.social_icon}>
-          <TouchableOpacity>
-            <SocialIcon type="google" />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <SocialIcon type="facebook" />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <SocialIcon type="twitter" />
-          </TouchableOpacity>
-        </View>
-
-        <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-          <Text
-            className="text-xs"
-            style={{ marginTop: 20, paddingVertical: 15 }}
-          >
-            By signing in,you accept our
+          <Text style={[styles.text_footer, { marginTop: 25 }]}>
+            Confirm Password{" "}
           </Text>
-          <TouchableOpacity>
-            <Text
-              style={{
-                marginTop: 20,
-                fontWeight: "bold",
-                color: "#8EE1FF",
-                paddingVertical: 15,
-                fontSize: 14,
-              }}
-            >
-              Terms and Conditions
-            </Text>
+          <View style={styles.action}>
+            <Icon name="lock" type="font-awesome" color="grey" size={20} />
+            <TextInput
+              value={ConfimPassword}
+              placeholder="Confirm Password"
+              style={styles.textInput}
+              autoCapitalize="none"
+              onChangeText={(value) =>
+                handlechangeText(value, "ConfimPassword")
+              }
+              secureTextEntry={security.secureTextEntry ? true : false}
+            />
+
+            <TouchableOpacity onPress={updateSecureTextEntry}>
+              {security.secureTextEntry ? (
+                <Icon name="eye" type="font-awesome" color="grey" size={20} />
+              ) : (
+                <Icon
+                  name="eye-slash"
+                  type="font-awesome"
+                  color="grey"
+                  size={20}
+                />
+              )}
+            </TouchableOpacity>
+          </View>
+
+          <TouchableOpacity
+            onPress={
+              submitform
+              // () => navigationi.navigate("Down")
+            }
+            style={[
+              styles.sign_button,
+              styles.shadowBtn,
+              { shadowColor: "#8EE1FF" },
+            ]}
+          >
+            <Text>Sign up</Text>
           </TouchableOpacity>
+
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+              paddingVertical: 20,
+              paddingBottom: 5,
+            }}
+          >
+            <Text> ──── Or sign in with ────</Text>
+          </View>
+
+          <View style={styles.social_icon}>
+            <TouchableOpacity>
+              <SocialIcon type="google" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <SocialIcon type="facebook" />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <SocialIcon type="twitter" />
+            </TouchableOpacity>
+          </View>
+
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-around" }}
+          >
+            <Text
+              className="text-xs"
+              style={{ marginTop: 20, paddingVertical: 15 }}
+            >
+              By signing in,you accept our
+            </Text>
+            <TouchableOpacity>
+              <Text
+                style={{
+                  marginTop: 20,
+                  fontWeight: "bold",
+                  color: "#8EE1FF",
+                  paddingVertical: 15,
+                  fontSize: 14,
+                }}
+              >
+                Terms and Conditions
+              </Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
-    {typeof Signinres === 'object' ? <AppLoader/> : null}
+      {typeof Signinres === "object" ? <AppLoader /> : null}
     </>
   );
 };

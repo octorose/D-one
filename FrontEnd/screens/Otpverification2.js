@@ -13,12 +13,11 @@ import OTPInputView from "@twotalltotems/react-native-otp-input";
 const Otpverification1 = () => {
   // const [phoneNumber, setPhoneNumber] = useState('')
 
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-           source={require('../assets/images/logo.png')}
+          source={require("../assets/images/logo.png")}
           style={{
             justifyContent: "center",
             alignItems: "center",

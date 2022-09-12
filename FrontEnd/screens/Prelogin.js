@@ -24,7 +24,7 @@ const Prelogin = () => {
     >
       <View className="items-center ">
         <Image
-          source={require('../assets/images/logo.png')}
+          source={require("../assets/images/logo.png")}
           style={{ height: height * 0.2, width: width * 0.41 }}
         />
       </View>

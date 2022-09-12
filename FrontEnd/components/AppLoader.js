@@ -14,12 +14,12 @@ const AppLoader = () => {
   );
 };
 const styles = StyleSheet.create({
-    container:{
-        justifyContent:'center',
-        alignItems:'center',
-        backgroundColor:'rgb(255, 255, 255)',
-        zIndex:10  
-    }
-})
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgb(255, 255, 255)",
+    zIndex: 10,
+  },
+});
 
 export default AppLoader;

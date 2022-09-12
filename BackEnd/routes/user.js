@@ -1,7 +1,12 @@
 const express = require("express");
 const { check } = require("express-validator");
 const router = express.Router();
-const { creatUser, UserSignin, uploadProfile, SignOut } = require("../controllers/user");
+const {
+  creatUser,
+  UserSignin,
+  uploadProfile,
+  SignOut,
+} = require("../controllers/user");
 const { Isauth } = require("../Middlewares/auth");
 const {
   ValidateUserSignup,
@@ -9,7 +14,6 @@ const {
   SigninValidation,
 } = require("../Middlewares/validation/user");
 const multer = require("multer");
-
 
 const storage = multer.diskStorage({});
 const fileFilter = (req, file, cb) => {
@@ -29,6 +33,6 @@ router.post(
   uploads.single("profilepic"),
   uploadProfile
 );
-router.post('/sign-out', Isauth, SignOut)
+router.post("/sign-out", Isauth, SignOut);
 
 module.exports = router;

@@ -62,10 +62,10 @@ const Sign = () => {
       try {
         const res = await client.post("/sign-in", { ...data });
         // console.log(res.data) ;
-        if(res.data.success){
-          const walo = {'wiw':"waw"}
-          setData({Email:'', Password:''})
-          navigation.navigate('Down',res.data)
+        if (res.data.success) {
+          const walo = { wiw: "waw" };
+          setData({ Email: "", Password: "" });
+          navigation.navigate("Down", res.data);
         }
       } catch (error) {
         console.log(error.message);
@@ -87,8 +87,8 @@ const Sign = () => {
             height: 200,
             top: 40,
           }}
-          />
-          {error ? <Text>{error}</Text> : null}
+        />
+        {error ? <Text>{error}</Text> : null}
         <Text style={styles.text_header}>Log-In</Text>
       </View>
       <View style={styles.footer}>
