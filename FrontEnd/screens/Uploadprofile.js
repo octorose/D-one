@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import client from "../API/client";
 import { useNavigation } from "@react-navigation/native";
+import AppLoader from "../components/AppLoader";
 
 const Uploadprofile = (props) => {
   const [image, setImage] = useState(null);
@@ -25,6 +26,7 @@ const Uploadprofile = (props) => {
   };
   const navigationi = useNavigation();
 
+  const [sign, setsign] = useState(false)
   const uploadProfileImage =  async () => {
       const formdata = new FormData();
       formdata.append("profilepic", {
@@ -33,14 +35,18 @@ const Uploadprofile = (props) => {
           type: "image/jpg",
         });
         console.log('waa');
-    try {        
-        const res = await client.post("/upload-profile", formdata, {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "multipart/form-data",
-            authorization: `JWT ${token}`,
-          },
-        });
+    try {  
+      setsign(true)
+      console.log(sign);    
+      const res = await client.post("/upload-profile", formdata, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "multipart/form-data",
+          authorization: `JWT ${token}`,
+        },
+      });
+      setsign(false)
+      console.log(sign);    
         if (res.data.success) {
           navigationi.navigate('Down', res.data)
         }
@@ -50,6 +56,7 @@ const Uploadprofile = (props) => {
     }
   };
   return (
+    <>
     <View style={{ height: "100%", alignItems: "center" }}>
       <Image
         source={require("../assets/images/logo.png")}
@@ -135,6 +142,9 @@ const Uploadprofile = (props) => {
         Let Us See You
       </Text>
     </View>
+{     sign ? (<AppLoader/>) : null
+}
+    </>
   );
 };
 const styles = StyleSheet.create({

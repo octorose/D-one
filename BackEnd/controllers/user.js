@@ -82,13 +82,11 @@ exports.uploadProfile = async (req, res) => {
     });
 
     await User.findByIdAndUpdate(user._id, { avatar: result.url });
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: "Your profile picture is updated",
-        user: { avatar: result.url },
-      });
+    res.status(201).json({
+      success: true,
+      message: "Your profile picture is updated",
+      user: { avatar: result.url },
+    });
   } catch (error) {
     res
       .status(500)

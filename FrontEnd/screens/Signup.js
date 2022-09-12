@@ -11,7 +11,7 @@ import { Icon } from "react-native-elements";
 import { SocialIcon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import client from "../API/client";
-
+import AppLoader from "../components/AppLoader";
 
 const isValidObjField = (obj) => {
   return Object.values(obj).every((value) => value.trim());
@@ -52,9 +52,9 @@ const Signup = () => {
   const isValidForm = () => {
     if (!isValidObjField(data))
       return updateError("Required all fields!", seterror);
-    if (!Username.trim() || Username.length < 3)
+      if (!Username.trim() || Username.length < 3)
       return updateError("invalide Username!", seterror);
-    if (!isValidEmail(Email))
+      if (!isValidEmail(Email))
       return updateError("this email is not valide", seterror);
     if (!Password.trim() || Password.length < 8)
       return updateError(
@@ -76,10 +76,11 @@ const Signup = () => {
         ConfimPassword,
       });
       if (response.data.success) {
-          // console.log('waawa');
-          const Signinres = await client.post('/sign-in',{Email, Password})
-          console.log(Signinres.data);
-          navigationi.replace('Uploadprofile', {token : Signinres.data.token})        
+        // console.log('waawa');
+        let Signinres = 12;
+        Signinres = await client.post("/sign-in", { Email, Password });
+        console.log(Signinres.data);
+        navigationi.replace("Uploadprofile", { token: Signinres.data.token });
       }
       console.log(response.data);
     }
@@ -87,26 +88,27 @@ const Signup = () => {
   const navigationi = useNavigation();
 
   return (
+    <>
     <View style={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require('../assets/images/logo.png')}
+          source={require("../assets/images/logo.png")}
           style={{
             justifyContent: "center",
             alignItems: "center",
             width: 200,
             height: 200,
-            top: 50,
+            top: 40,
           }}
-        />
-        {error ? <Text>{error}</Text> : null}
+          />
+          {error ? <Text >{error}</Text> : null}
         <Text style={styles.text_header}>Create your Account</Text>
       </View>
       <View style={styles.footer}>
         <Text style={styles.text_footer}>Email</Text>
 
         <View style={styles.action}>
-          <Icon name="at" type="font-awesome" color="grey" size={18}  />
+          <Icon name="at" type="font-awesome" color="grey" size={18} />
           <TextInput
             value={Email}
             placeholder="Email"
@@ -114,7 +116,7 @@ const Signup = () => {
             autoCapitalize="none"
             onChangeText={(value) => handlechangeText(value, "Email")}
             keyboardType={"email-address"}
-          />
+            />
         </View>
 
         <Text style={[styles.text_footer, { marginTop: 25 }]}>Username </Text>
@@ -127,7 +129,7 @@ const Signup = () => {
             autoCapitalize="none"
             onChangeText={(value) => handlechangeText(value, "Username")}
             keyboardType={"email-address"}
-          />
+            />
         </View>
 
         <Text style={[styles.text_footer, { marginTop: 25 }]}>Password </Text>
@@ -140,19 +142,19 @@ const Signup = () => {
             autoCapitalize="none"
             onChangeText={(value) => handlechangeText(value, "Password")}
             secureTextEntry={security.secureTextEntry ? true : false}
-          />
+            />
 
           <TouchableOpacity onPress={updateSecureTextEntry}>
             {security.secureTextEntry ? (
               <Icon name="eye" type="font-awesome" color="grey" size={20} />
-            ) : (
-              <Icon
+              ) : (
+                <Icon
                 name="eye-slash"
                 type="font-awesome"
                 color="grey"
                 size={20}
-              />
-            )}
+                />
+                )}
           </TouchableOpacity>
         </View>
 
@@ -168,19 +170,19 @@ const Signup = () => {
             autoCapitalize="none"
             onChangeText={(value) => handlechangeText(value, "ConfimPassword")}
             secureTextEntry={security.secureTextEntry ? true : false}
-          />
+            />
 
           <TouchableOpacity onPress={updateSecureTextEntry}>
             {security.secureTextEntry ? (
               <Icon name="eye" type="font-awesome" color="grey" size={20} />
-            ) : (
-              <Icon
+              ) : (
+                <Icon
                 name="eye-slash"
                 type="font-awesome"
                 color="grey"
                 size={20}
-              />
-            )}
+                />
+                )}
           </TouchableOpacity>
         </View>
 
@@ -194,7 +196,7 @@ const Signup = () => {
             styles.shadowBtn,
             { shadowColor: "#8EE1FF" },
           ]}
-        >
+          >
           <Text>Sign up</Text>
         </TouchableOpacity>
 
@@ -245,6 +247,8 @@ const Signup = () => {
         </View>
       </View>
     </View>
+    {typeof Signinres === 'object' ? <AppLoader/> : null}
+    </>
   );
 };
 
