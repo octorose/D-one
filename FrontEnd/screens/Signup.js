@@ -76,11 +76,12 @@ const Signup = () => {
         ConfimPassword,
       });
       if (response.data.success) {
-        // console.log('waawa');
         let Signinres = 12;
         Signinres = await client.post("/sign-in", { Email, Password });
         console.log(Signinres.data);
-        navigationi.replace("Uploadprofile", { token: Signinres.data.token });
+        if(Signinres.data.success){
+          navigationi.replace("Uploadprofile", { data: Signinres.data });
+        }
       }
       console.log(response.data);
     }

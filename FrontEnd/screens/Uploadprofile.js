@@ -8,7 +8,9 @@ import AppLoader from "../components/AppLoader";
 const Uploadprofile = (props) => {
   const [image, setImage] = useState(null);
   const [Progress, setProgress] = useState(0);
-  const { token } = props.route.params;
+  const { data } = props.route.params;
+  console.log("w",data);
+  console.log(data.token);
   const Openimagelibrary = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -18,7 +20,7 @@ const Uploadprofile = (props) => {
       quality: 1,
     });
 
-    console.log(result);
+    // console.log(result);
 
     if (!result.cancelled) {
       setImage(result.uri);
@@ -34,7 +36,7 @@ const Uploadprofile = (props) => {
       uri: image,
       type: "image/jpg",
     });
-    console.log("waa");
+    console.log("wait");
     try {
       setsign(true);
       console.log(sign);
@@ -42,11 +44,11 @@ const Uploadprofile = (props) => {
         headers: {
           Accept: "application/json",
           "Content-Type": "multipart/form-data",
-          authorization: `JWT ${token}`,
+          authorization: `JWT ${data.token}`,
         },
       });
       setsign(false);
-      console.log(sign);
+      console.log(res.data);
       if (res.data.success) {
         navigationi.navigate("Down", res.data);
       }

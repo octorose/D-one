@@ -34,7 +34,7 @@ const App = () => {
   const [isAppFirstlaunched, setIsAppFirstLaunched] = react.useState(null);
   const fetchApi = async () => {
     try {
-      const res = await axios.get("http://192.168.1.105:8000/");
+      const res = await axios.get("http://192.168.1.103:8000/");
       console.log(res.data);
     } catch (error) {
       console.log(error);

@@ -42,8 +42,8 @@ function getGreetingTime(m) {
 // 	.catch(err => console.error(err));
 
 const Header = (data) => {
-  const avatar = data.data.user.avatar;
-  console.log(avatar);
+  const avatar = data.data.user.Profile.avatar;
+  // console.log(avatar);
   return (
     <View className="flex-row items-center justify-between mt-4">
       <Text

@@ -60,11 +60,12 @@ exports.UserSignin = async (req, res) => {
     Email: user.Email,
     avatar: user.avatar ? user.avatar : "",
   };
-  res.json({
+   res.json({
     success: true,
     user: userInfo,
     token,
   });
+  // console.log(hada._parsedUrl);
 };
 
 exports.uploadProfile = async (req, res) => {
@@ -85,7 +86,7 @@ exports.uploadProfile = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Your profile picture is updated",
-      user: { avatar: result.url },
+      user: {  Profile:user },
     });
   } catch (error) {
     res

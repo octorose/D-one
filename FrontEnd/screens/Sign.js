@@ -61,9 +61,8 @@ const Sign = () => {
       // submit form
       try {
         const res = await client.post("/sign-in", { ...data });
-        // console.log(res.data) ;
+        console.log(res.data) ;
         if (res.data.success) {
-          const walo = { wiw: "waw" };
           setData({ Email: "", Password: "" });
           navigation.navigate("Down", res.data);
         }
