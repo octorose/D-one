@@ -20,7 +20,7 @@ const Uploadprofile = (props) => {
       quality: 1,
     });
 
-    // console.log(result);
+    console.log(result);
 
     if (!result.cancelled) {
       setImage(result.uri);
@@ -51,8 +51,8 @@ const Uploadprofile = (props) => {
       console.log(res.data);
       if (res.data.success) {
         navigationi.navigate("Down", res.data);
+        // console.log("tdart");
       }
-      console.log(res.data);
     } catch (error) {
       console.log(error.message);
     }

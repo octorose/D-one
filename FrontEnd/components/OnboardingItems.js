@@ -117,7 +117,7 @@ const OnboardingItems = ({ navigation }) => {
             >
               <TouchableOpacity
                 style={{ justifyContent: "center" }}
-                onPress={() => navigation.replace("Down")}
+                onPress={() => navigation.replace("Sign")}
               >
                 <Text
                   style={{

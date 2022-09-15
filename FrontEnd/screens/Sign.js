@@ -20,6 +20,7 @@ import { isValidEmail, isValidObjField, updateError } from "../utils/methodes";
 import Terms_signlnk from "../components/Terms_signlnk";
 import { useNavigation } from "@react-navigation/native";
 import client from "../API/client";
+import { Signin } from "../API/user";
 
 const Sign = () => {
   const [data, setData] = React.useState({
@@ -60,11 +61,11 @@ const Sign = () => {
     if (isValidForm()) {
       // submit form
       try {
-        const res = await client.post("/sign-in", { ...data });
+        const res = await Signin(data.Email, data.Password);
         console.log(res.data) ;
         if (res.data.success) {
           setData({ Email: "", Password: "" });
-          navigation.navigate("Down", res.data);
+          navigation.replace("Down", res.data);
         }
       } catch (error) {
         console.log(error.message);

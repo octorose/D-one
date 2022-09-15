@@ -44,9 +44,6 @@ const Stats = () => {
   const UpdateCurrentTabIndex1 = (e) => {
     setCurrentTabIndex(1);
   };
-  useEffect(() => {
-    console.log(currentTabIndex);
-  }, [currentTabIndex]);
 
   return (
     <View

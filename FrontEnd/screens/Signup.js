@@ -12,6 +12,7 @@ import { SocialIcon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
 import client from "../API/client";
 import AppLoader from "../components/AppLoader";
+import { Signin } from "../API/user";
 
 const isValidObjField = (obj) => {
   return Object.values(obj).every((value) => value.trim());
@@ -75,15 +76,14 @@ const Signup = () => {
         Password,
         ConfimPassword,
       });
+      console.log("Created", response.data);
       if (response.data.success) {
-        let Signinres = 12;
-        Signinres = await client.post("/sign-in", { Email, Password });
-        console.log(Signinres.data);
-        if(Signinres.data.success){
+        const Signinres = await Signin(Email, Password);
+        // console.log(Signinres.data);
+        if (Signinres.data.success) {
           navigationi.replace("Uploadprofile", { data: Signinres.data });
         }
       }
-      console.log(response.data);
     }
   };
   const navigationi = useNavigation();

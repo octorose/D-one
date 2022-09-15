@@ -11,8 +11,12 @@ import React, { Component } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../components/Header";
+import { useLogin } from "../context/LogingProvider";
 
-const AddData = () => {
+const AddData = ({route}) => {
+  // const data = route.params;
+  // console.log(data);
+
   const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
@@ -45,7 +49,7 @@ const AddData = () => {
 
         <View style={styles.R2}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("Glucose")}
+            onPress={() => navigation.navigate("Glucose", data)}
             style={[
               styles.profileImgContainer,
               { borderColor: "#D24646", borderWidth: 2 },

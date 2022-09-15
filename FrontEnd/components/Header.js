@@ -1,6 +1,7 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
 import moment from "moment";
+import { useLogin } from "../context/LogingProvider";
 
 const greetings = {
   morning: "Good Morning",
@@ -42,8 +43,10 @@ function getGreetingTime(m) {
 // 	.catch(err => console.error(err));
 
 const Header = (data) => {
-  const avatar = data.data.user.Profile.avatar;
-  // console.log(avatar);
+  const { profile } = useLogin();
+  const avatar =profile.Profile.avatar;
+  // const avatar = data.data.user.Profile.avatar;
+  console.log(avatar);
   return (
     <View className="flex-row items-center justify-between mt-4">
       <Text
