@@ -60,10 +60,11 @@ exports.UserSignin = async (req, res) => {
     Email: user.Email,
     avatar: user.avatar ? user.avatar : "",
   };
-   res.json({
+  res.json({
     success: true,
-    user: userInfo,
+    // user: userInfo,
     token,
+    user: { Profile: user },
   });
   // console.log(hada._parsedUrl);
 };
@@ -86,7 +87,7 @@ exports.uploadProfile = async (req, res) => {
     res.status(201).json({
       success: true,
       message: "Your profile picture is updated",
-      user: {  Profile:user },
+      user: { Profile: user },
     });
   } catch (error) {
     res
@@ -107,6 +108,5 @@ exports.SignOut = async (req, res) => {
     const newTokens = tokens.filter((t) => t.token !== token);
     await User.findByIdAndUpdate(req.user._id, { tokens: newTokens });
     res.json({ success: true, message: "logging out successfully!" });
-    res.send("ok");
   }
 };
