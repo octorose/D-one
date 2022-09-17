@@ -7,33 +7,39 @@ const LoginContext = createContext();
 const LoginProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [profile, setProfile] = useState({});
+  const [mounted, setMounted] = useState(false);
 
-  const fetchUser = async () => {
-    const token = await AsyncStorage.getItem("token");
-    if (token !== null) {
-      const res = await client.get("/profile", {
-        headers: {
-          Authorization: `JWT ${token}`,
-        },
-      });
-    //   console.log(res.data);
-      if (res.data.success) {
-        setProfile(res.data);
-        setIsLoggedIn(true);
+  // console.log('qq',profile);
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = await AsyncStorage.getItem("token");
+      if (token !== null) {
+        const res = await client.get("/profile", {
+          headers: {
+            Authorization: `JWT ${token}`,
+          },
+        });
+        //   console.log(res.data);
+        if (res.data.success) {
+          setProfile(res.data);
+          setIsLoggedIn(true);
+          setMounted(true);
+          console.log("fetched");
+        } else {
+          setIsLoggedIn(false);
+          setProfile({});
+        }
       } else {
         setIsLoggedIn(false);
         setProfile({});
       }
-    } else {
-      setIsLoggedIn(false);
-      setProfile({});
+    };
+    if (mounted === false) {
+      fetchUser();
     }
-};
-console.log('qq',profile);
-useEffect(() => {
-    fetchUser();
-}, []);
-return (
+  }, [mounted]);
+
+  return (
     <LoginContext.Provider
       value={{ isLoggedIn, setIsLoggedIn, profile, setProfile }}
     >
