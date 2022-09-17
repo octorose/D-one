@@ -12,14 +12,15 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import React from "react";
 import Header from "../components/Header";
 import Stats from "../components/Stats";
+import { useLogin } from "../context/LogingProvider";
 const Tab = createMaterialTopTabNavigator();
 const { width } = Dimensions.get("window");
 const Homescreen = ({ route }) => {
-  // const data = route.params;
-  // console.log(route.key);
+  const data = route.params;
+  // console.log('param here',route.params);
   return (
     <SafeAreaView className="pt-1 mx-4" style={width}>
-      <Header />
+      <Header data={data} />
       <Stats />
     </SafeAreaView>
   );
