@@ -44,9 +44,20 @@ function getGreetingTime(m) {
 
 const Header = (data) => {
   const { profile } = useLogin();
-  const avatar =profile.Profile.avatar;
+  let avatar;
+  if (profile === undefined) {
+    console.log("from DB", data);
+    avatar = data.data.avatar;
+  }
+  if (data.data === undefined) {
+    const Profile_len = Object.keys(profile.Profile).length;
+    console.log(Profile_len);
+    avatar = profile.Profile.avatar;
+  }
+  // const Profile_len = Object.keys(profile.Profile).length;
+  // console.log("from device",profile.keys(Profile).lenght === 0);
   // const avatar = data.data.user.Profile.avatar;
-  console.log(avatar);
+  // console.log(avatar);
   return (
     <View className="flex-row items-center justify-between mt-4">
       <Text
