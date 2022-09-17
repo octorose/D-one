@@ -9,7 +9,6 @@ import {
   SafeAreaView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Lottie from "lottie-react-native";
 
 const Animation = (navigation) => {
   const fadeAnim = useRef(new Animated.Value(1)).current;

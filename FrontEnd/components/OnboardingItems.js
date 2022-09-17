@@ -169,7 +169,7 @@ const OnboardingItems = ({ navigation }) => {
     const contentoffsetX = e.nativeEvent.contentOffset.x;
     const currentIndex = Math.round(contentoffsetX / width);
     setCurrentSlideIndex(currentIndex);
-    console.log(currentIndex);
+    // console.log(currentIndex);
   };
   const goNextSlide = () => {
     const nextSlideIndex = currentSlideIndex + 1;

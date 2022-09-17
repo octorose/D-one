@@ -13,65 +13,67 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Header from "../components/Header";
 import { useLogin } from "../context/LogingProvider";
 
-const AddData = ({route}) => {
+const AddData = ({ route }) => {
   // const data = route.params;
   // console.log(data);
-
   const navigation = useNavigation();
   return (
-    <SafeAreaView style={styles.container}>
-      <View className="mt-24">
-        <View style={styles.R1}>
-          <TouchableOpacity
-            style={[
-              styles.profileImgContainer,
-              { borderColor: "#4DA7CC", borderWidth: 2 },
-            ]}
-          >
-            <Image
-              source={require("../assets/nutrition.png")}
-              style={styles.Img}
-            />
-          </TouchableOpacity>
+    <SafeAreaView className="mx-1 ml-2">
+      <Header />
+      <View style={styles.container}>
+        <View className="mt-24">
+          <View style={styles.R1}>
+            <TouchableOpacity
+              style={[
+                styles.profileImgContainer,
+                { borderColor: "#4DA7CC", borderWidth: 2 },
+              ]}
+            >
+              <Image
+                source={require("../assets/nutrition.png")}
+                style={styles.Img}
+              />
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[
-              styles.profileImgContainer,
-              { borderColor: "#4C5BDF", borderWidth: 2 },
-            ]}
-          >
-            <Image
-              source={require("../assets/sports.png")}
-              style={styles.Img}
-            />
-          </TouchableOpacity>
-        </View>
+            <TouchableOpacity
+              style={[
+                styles.profileImgContainer,
+                { borderColor: "#4C5BDF", borderWidth: 2 },
+              ]}
+            >
+              <Image
+                source={require("../assets/sports.png")}
+                style={styles.Img}
+              />
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.R2}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Glucose", data)}
-            style={[
-              styles.profileImgContainer,
-              { borderColor: "#D24646", borderWidth: 2 },
-            ]}
-          >
-            <Image
-              source={require("../assets/glucose.png")}
-              style={styles.Img}
-            />
-          </TouchableOpacity>
+          <View style={styles.R2}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Glucose", data)}
+              style={[
+                styles.profileImgContainer,
+                { borderColor: "#D24646", borderWidth: 2 },
+              ]}
+            >
+              <Image
+                source={require("../assets/glucose.png")}
+                style={styles.Img}
+              />
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            style={[
-              styles.profileImgContainer,
-              { borderColor: "#35C660", borderWidth: 2 },
-            ]}
-          >
-            <Image
-              source={require("../assets/insuline.png")}
-              style={styles.Img}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.profileImgContainer,
+                { borderColor: "#35C660", borderWidth: 2 },
+              ]}
+            >
+              <Image
+                source={require("../assets/insuline.png")}
+                style={styles.Img}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </SafeAreaView>

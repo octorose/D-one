@@ -33,7 +33,6 @@ const Costumtabbutton = ({ children, onPress }) => {
   );
 };
 const Down = ({ route }) => {
-  // console.log("Down", route);
   return (
     <Tab.Navigator
       screenOptions={{
@@ -153,10 +152,10 @@ const Down = ({ route }) => {
 
 export default Down;
 const styles = StyleSheet.create({
-    shadow: {
-      shadowColor: "#0d093b",
-      shadowOffset: { width: 0, height: 10 },
-      shadowOpacity: 0.25,
-      elevation: 5,
-    },
-  });
+  shadow: {
+    shadowColor: "#0d093b",
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.25,
+    elevation: 5,
+  },
+});

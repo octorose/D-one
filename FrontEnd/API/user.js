@@ -1,5 +1,5 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import client from './client';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import client from "./client";
 export const Signin = async (Email, Password) => {
   try {
     const Signinres = await client.post("/sign-in", { Email, Password });
