@@ -3,8 +3,7 @@ import Mainnavigator from "./components/Mainnavigator";
 import LoginProvider from "./context/LogingProvider";
 
 const App = () => {
-  // const {profile} = LoginProvider();
-  // console.log(profile);
+
   return (
     <LoginProvider>
       <NavigationContainer>

@@ -33,16 +33,21 @@ router.post(
   uploads.single("profilepic"),
   uploadProfile
 );
-router.get('/profile', Isauth, (req, res)=>{
-  if(!req.user) return res.status(401).json({success: false, message: 'unauthorized access'})
+router.get("/profile", Isauth, (req, res) => {
+  if (!req.user)
+    return res
+      .status(401)
+      .json({ success: false, message: "unauthorized access" });
 
-  res.json({success: true, Profile:{
-    Username: req.user.Username,
-    Email: req.user.Email,
-    avatar: req.user.avatar ? req.user.avatar : ''
-  }})
-}
-);
+  res.json({
+    success: true,
+    Profile: {
+      Username: req.user.Username,
+      Email: req.user.Email,
+      avatar: req.user.avatar ? req.user.avatar : "",
+    },
+  });
+});
 router.post("/sign-out", Isauth, SignOut);
 
 module.exports = router;

@@ -50,7 +50,7 @@ const AddData = ({ route }) => {
 
           <View style={styles.R2}>
             <TouchableOpacity
-              onPress={() => navigation.navigate("Glucose", data)}
+              onPress={() => navigation.navigate("Glucose")}
               style={[
                 styles.profileImgContainer,
                 { borderColor: "#D24646", borderWidth: 2 },

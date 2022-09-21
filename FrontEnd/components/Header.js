@@ -29,29 +29,15 @@ function getGreetingTime(m) {
 
   return g;
 }
-//   const options = {
-// 	method: 'POST',
-// 	headers: {
-// 		'X-RapidAPI-Key': '9454321336mshad93533763256a9p10d077jsnee9ef7d4adf7',
-// 		'X-RapidAPI-Host': 'andruxnet-random-famous-quotes.p.rapidapi.com'
-// 	}
-// };
-// let quotes;
-// fetch('https://andruxnet-random-famous-quotes.p.rapidapi.com/?cat=movies&count=10', options)
-// 	.then(response => response.json())
-// 	.then(response => quotes=response)
-// 	.catch(err => console.error(err));
 
 const Header = (data) => {
   const { profile } = useLogin();
   let avatar;
   if (profile === undefined) {
-    console.log("from DB", data);
     avatar = data.data.avatar;
   }
   if (data.data === undefined) {
     const Profile_len = Object.keys(profile.Profile).length;
-    console.log(Profile_len);
     avatar = profile.Profile.avatar;
   }
   // const Profile_len = Object.keys(profile.Profile).length;
