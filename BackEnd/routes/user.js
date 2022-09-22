@@ -48,6 +48,6 @@ router.get("/profile", Isauth, (req, res) => {
     },
   });
 });
-router.post("/sign-out", Isauth, SignOut);
+router.get("/sign-out", Isauth, SignOut);
 
 module.exports = router;
