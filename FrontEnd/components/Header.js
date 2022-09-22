@@ -45,7 +45,7 @@ const Header = (data) => {
   // const avatar = data.data.user.Profile.avatar;
   // console.log(avatar);
   return (
-    <View className="flex-row items-center justify-between mt-4">
+    <View className="flex-row items-center justify-between my-5 ">
       <Text
         className="text-3xl font-bold tracking-wide"
         style={{
@@ -67,7 +67,7 @@ const Header = (data) => {
           source={{ uri: avatar }}
           //   require("../assets/images/logo.png")
 
-          className="h-20 w-20 rounded-full mr-4"
+          className="h-16 w-16 rounded-full mr-4"
         />
       ) : (
         <Image

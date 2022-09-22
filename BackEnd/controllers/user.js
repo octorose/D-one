@@ -44,7 +44,7 @@ exports.UserSignin = async (req, res) => {
   });
   let oldTokens = user.tokens || [];
   if (oldTokens.length) {
-    oldTokens = oldTokens.filter((t) => {
+    oldTokens = oldTokens.filter(t => {
       const Timediff = (Date.now() - parseInt(t.signedAt)) / 1000;
       if (Timediff < 86400) {
         return t;

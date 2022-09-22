@@ -13,6 +13,7 @@ const LoginProvider = ({ children }) => {
   useEffect(() => {
     const fetchUser = async () => {
       const token = await AsyncStorage.getItem("token");
+      console.log(token);
       if (token !== null) {
         const res = await client.get("/profile", {
           headers: {
